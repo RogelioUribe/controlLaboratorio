@@ -1,0 +1,48 @@
+﻿<!--CSS-->
+<link rel="stylesheet" type="text/css" href="~/Content/asistencia.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/global.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/font-awesome.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/styles.css" />
+
+<!--Titulo pestaña-->
+<title>Asistencias</title>
+
+<!--Titulo-->
+<h2 id="titulo">Asistencia</h2>
+
+<!--Panel principal-->
+<div id="info">
+    No. Empleado: <input type="text" class="cajas txtDefault" id="txtEmpleado" onkeyup = "if (event.keyCode == 13) getHorario()" onkeypress="return justNumbers(event)" />    
+    Alumnos: <input type="text" class="cajas txtDefault" id="txtAlumnos" onkeypress="return justNumbers(event)" />    
+</div>
+
+<!--Tabla de horario-->
+<div id="infoHorario">
+    <div id="info" class="table-responsive">
+        <table id="tbHorario" class="table table-hover">
+            <thead>
+                <tr>
+                    <th style="display:none">Id</th>                                        
+                    <th>Materia</th>
+                    <th>Grupo</th>
+                    <th>Laboratorio</th>
+                    <th>Hora Entrada</th>
+                    <th>Hora Salida</th>                    
+                    <th>---</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!--Botones-->
+<input type="submit" value="Aceptar" id="btnAceptar" onclick="validar()" />
+<input type="submit" value="Cancelar" id="btnCancelar" onclick="limpiar()" />
+
+<!--Script-->
+<script src="~/Scripts/global.js"></script>
+<script src="~/Scripts/asistencia.js"></script>
+

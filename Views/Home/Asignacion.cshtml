@@ -1,0 +1,223 @@
+﻿<!--CSS-->
+<link rel="stylesheet" type="text/css" href="~/Content/asignacion.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/global.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/font-awesome.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/styles.css" />
+
+<!--Titulo pestaña-->
+<title>Asignación de horario</title>
+
+<!--Titulo-->
+<h2 id="titulo">Asignacion</h2>
+
+<!--Panel principal-->
+<div id="info">
+    Grupo: <input type="text" class="cajas txtSearch" id="txtGrupo" maxlength="1" required onKeyPress="return soloLetras(event);" />    
+    Materia: <input type="text" class="cajas txtSearch" id="txtMateria" />
+    <button type="button" data-toggle="modal" data-target=".modalMaterias" onclick="limpiarModalMtr()">
+        <i class="fa fa-search" aria-hidden="true"></i>
+    </button>
+    Profesor: <input type="text" class="cajas txtDefault" id="txtProfesor" />
+    <button type="button" data-toggle="modal" data-target=".modalProfesor" onclick="limpiarModalPrf()">
+        <i class="fa fa-search" aria-hidden="true"></i>
+    </button>
+    Laboratorio: <input type="text" class="cajas txtDefault" id="txtLaboratorio"  />
+    <button type="button" data-toggle="modal" data-target=".modalLab" onclick="limpiarModalLab()">
+        <i class="fa fa-search" aria-hidden="true"></i>
+    </button>
+    Hora Entrada: <select class="cajas txtDefault" id="txtHoraEntrada" >
+                    <option> </option>
+                    <option>07:00</option>
+                    <option>08:00</option>
+                    <option>09:00</option>
+                    <option>10:00</option>
+                    <option>11:00</option>
+                    <option>12:00</option>
+                    <option>13:00</option>
+                    <option>14:00</option>
+                    <option>15:00</option>
+                    <option>16:00</option>
+                    <option>17:00</option>
+                    <option>18:00</option>
+                    <option>19:00</option>
+                    <option>20:00</option>
+                    <option>21:00</option>                   
+                </select>
+    Hora Salida: <select class="cajas txtDefault" id="txtHoraSalida">
+                    <option> </option>      
+                    <option>08:00</option>              
+                    <option>09:00</option>
+                    <option>10:00</option>
+                    <option>11:00</option>
+                    <option>12:00</option>
+                    <option>13:00</option>
+                    <option>14:00</option>
+                    <option>15:00</option>
+                    <option>16:00</option>
+                    <option>17:00</option>
+                    <option>18:00</option>
+                    <option>19:00</option>
+                    <option>20:00</option>
+                    <option>21:00</option>
+                    <option>22:00</option>
+                </select>    
+    Dia: <select class="cajas txtDefault" id="txtDia">
+            <option> </option>
+            <option>LUNES</option>
+            <option>MARTES</option>
+            <option>MIERCOLES</option>
+            <option>JUEVES</option>
+            <option>VIERNES</option> 
+            <option>SABADO</option>                            
+        </select>
+</div>
+
+<!--Botones-->
+<input type="submit" value="Aceptar" id="btnAceptar" onclick="validar()" />
+<input type="submit" value="Cancelar" id="btnCancelar" onclick="limpiar()" />
+
+<!--Modal de Materias-->
+<div class="modal fade modal modalMaterias">
+    <div class="modal-content modalPrincipal">
+        <div class="modalSecundario">
+            <h2 id="titulo">Materias</h2>
+            <label>Buscar:</label>
+            <input type="text" class="cajas" id="SearchMtr" onkeyup="filtrarMrt(this)" />
+            <h3>Informacion</h3>
+            <div class="table-responsive">
+                <table class="table table-hover" id="tbMrt">
+                    <thead id="thHead">
+                        <tr>
+                            <th>Serie</th>
+                            <th>Nombre</th>
+                            <th>Semestre</th>
+                            <th>Carrera</th>                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr></tr>
+                        @*<tr id="trMrt1">
+                            <td id="tdNombre1">Programacion orientada a objetos</td>
+                            <td id="tdSemestre1">4</td>
+                            <td id="tdCarrera1">Ingenieria en Sistemas Computacionales</td>
+                            <td id="tdStatus"><i class="fa fa-check-square" aria-hidden="true" onclick="mostrarMtr(this)"></i></td>
+                        </tr>
+                        <tr id="trMrt2">
+                            <td id="tdNombre2">Telecomunicaciones</td>
+                            <td id="tdSemestre2">5</td>
+                            <td id="tdCarrera2">Telecomunicaciones</td>
+                            <td id="tdStatus"><i class="fa fa-check-square" aria-hidden="true" onclick="mostrarMtr(this)"></i></td>
+                        </tr>
+                        <tr id="trMrt3">
+                            <td id="tdNombre3">Contabilidad</td>
+                            <td id="tdSemestre3">3</td>
+                            <td id="tdCarrera3">Informatica</td>
+                            <td id="tdStatus"><i class="fa fa-check-square" aria-hidden="true" onclick="mostrarMtr(this)"></i></td>
+                        </tr>*@
+                    </tbody>
+                </table>
+            </div>
+            <button id="btnAceptar" data-dismiss="modal">Aceptar</button>
+        </div>
+    </div>
+</div>
+
+<!--Modal de Profesores-->
+<div class="modal fade modal modalProfesor">
+    <div class="modal-content modalPrincipal">
+        <div class="modalSecundario">
+            <h2 id="titulo">Profesores</h2>
+            <label>Buscar:</label>
+            <input type="text" class="cajas" id="SearchPrf" onkeyup="filtrarPrf(this)" />
+            <h3>Informacion</h3>
+            <div class="table-responsive">
+                <table class="table table-hover" id="tbPrf">
+                    <thead id="thHead">
+                        <tr>
+                            <th>No Empleado</th>
+                            <th>Nombre Completo</th>                                                      
+                            <th>Correo</th>                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr></tr>
+                        @*<tr id="trPrf1">
+                            <td id="tdNoEmp1">123456</td>
+                            <td id="tdNombre1">Rogelio Uribe Ruiz</td>
+                            <td id="tdPuesto1">Docente</td>
+                            <td id="tdVigencia1">02/03/2020</td>
+                            <td id="tdCorreo1">rogelio@gmail.com</td>
+                            <td id="tdStatus"><i class="fa fa-check-square" aria-hidden="true" onclick="mostrarPrf(this)"></i></td>
+                        </tr>
+                        <tr id="trPrf2">
+                            <td id="tdNoEmp2">123458</td>
+                            <td id="tdNombre2">Antonio Alfonso Maldonado Garcia</td>
+                            <td id="tdPuesto2">Auxiliar bimestral</td>
+                            <td id="tdVigencia2">02/05/2020</td>
+                            <td id="tdCorreo2">antonio@gmail.com</td>
+                            <td id="tdStatus"><i class="fa fa-check-square" aria-hidden="true" onclick="mostrarPrf(this)"></i></td>
+                        </tr>
+                        <tr id="trPrf3">
+                            <td id="tdNoEmp3">123451</td>
+                            <td id="tdNombre3">Silvia Johana Gonzales Garcia</td>
+                            <td id="tdPuesto3">Director</td>
+                            <td id="tdVigencia3">12/03/2020</td>
+                            <td id="tdCorreo3">silvia@gmail.com</td>
+                            <td id="tdStatus"><i class="fa fa-check-square" aria-hidden="true" onclick="mostrarPrf(this)"></i></td>
+                        </tr>*@
+                    </tbody>
+                </table>
+            </div>
+            <button id="btnAceptar" data-dismiss="modal">Aceptar</button>
+        </div>
+    </div>
+</div>
+
+<!--Modal de Laboratorios-->
+<div class="modal fade modal modalLab">
+    <div class="modal-content modalPrincipal">
+        <div class="modalSecundario">
+            <h2 id="titulo">Laboratorios</h2>
+            <label>Buscar:</label>
+            <input type="text" class="cajas" id="SearchLab" onkeyup="filtrarLab(this)" />
+            <h3>Informacion</h3>
+            <div class="table-responsive">
+                <table class="table table-hover" id="tbLab">
+                    <thead id="thHead">
+                        <tr>
+                            <th>Laboratorio</th>
+                            <th>Capacidad</th>                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr></tr>
+                        @*<tr id="trLab1">
+                            <td id="tdNombre1">A</td>
+                            <td id="tdCapacidad1">35</td>
+                            <td id="tdStatus"><i class="fa fa-check-square" aria-hidden="true" onclick="mostrarLab(this)"></i></td>
+                        </tr>
+                        <tr id="trLab2">
+                            <td id="tdNombre2">I</td>
+                            <td id="tdCapacidad2">40</td>
+                            <td id="tdStatus"><i class="fa fa-check-square" aria-hidden="true" onclick="mostrarLab(this)"></i></td>
+                        </tr>
+                        <tr id="trLab3">
+                            <td id="tdNombre3">C</td>
+                            <td id="tdCapacidad3">30</td>
+                            <td id="tdStatus"><i class="fa fa-check-square" aria-hidden="true" onclick="mostrarLab(this)"></i></td>
+                        </tr>*@
+                    </tbody>
+                </table>
+            </div>
+            <button id="btnAceptar" data-dismiss="modal">Aceptar</button>
+        </div>
+    </div>
+</div>
+
+<!--Scripts-->
+<script src="~/Scripts/jquery-1.9.1.js"></script>
+<script src="~/Scripts/jquery.autocomplete.js"></script>
+<script src="~/Scripts/global.js"></script>
+<script src="~/Scripts/asignacion.js"></script>
+
+

@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBLABModelStoreContainer" CdmEntityContainer="DBLABEntities">
+    <EntitySetMapping Name="ACCESO">
+      <EntityTypeMapping TypeName="DBLABModel.ACCESO">
+        <MappingFragment StoreEntitySet="ACCESO">
+          <ScalarProperty Name="acc_materia" ColumnName="acc_materia" />
+          <ScalarProperty Name="acc_periodo" ColumnName="acc_periodo" />
+          <ScalarProperty Name="acc_id" ColumnName="acc_id" />
+          <ScalarProperty Name="acc_usuario" ColumnName="acc_usuario" />
+          <ScalarProperty Name="acc_numeroId" ColumnName="acc_numeroId" />
+          <ScalarProperty Name="acc_laboratorioId" ColumnName="acc_laboratorioId" />
+          <ScalarProperty Name="acc_maquina" ColumnName="acc_maquina" />
+          <ScalarProperty Name="acc_horaEntrada" ColumnName="acc_horaEntrada" />
+          <ScalarProperty Name="acc_fecha" ColumnName="acc_fecha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ASISTENCIA">
+      <EntityTypeMapping TypeName="DBLABModel.ASISTENCIA">
+        <MappingFragment StoreEntitySet="ASISTENCIA">
+          <ScalarProperty Name="asis_id" ColumnName="asis_id" />
+          <ScalarProperty Name="asis_profesorId" ColumnName="asis_profesorId" />
+          <ScalarProperty Name="asis_materiaId" ColumnName="asis_materiaId" />
+          <ScalarProperty Name="asis_grupoId" ColumnName="asis_grupoId" />
+          <ScalarProperty Name="asis_laboratorioId" ColumnName="asis_laboratorioId" />
+          <ScalarProperty Name="asis_alumnos" ColumnName="asis_alumnos" />
+          <ScalarProperty Name="asis_horaEntrada" ColumnName="asis_horaEntrada" />
+          <ScalarProperty Name="asis_horaSalida" ColumnName="asis_horaSalida" />
+          <ScalarProperty Name="asis_fecha" ColumnName="asis_fecha" />
+          <ScalarProperty Name="asis_periodo" ColumnName="asis_periodo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CAMBIOS">
+      <EntityTypeMapping TypeName="DBLABModel.CAMBIOS">
+        <MappingFragment StoreEntitySet="CAMBIOS">
+          <ScalarProperty Name="cam_periodo" ColumnName="cam_periodo" />
+          <ScalarProperty Name="cambio_id" ColumnName="cambio_id" />
+          <ScalarProperty Name="cambio_serieGrp" ColumnName="cambio_serieGrp" />
+          <ScalarProperty Name="cambio_lab" ColumnName="cambio_lab" />
+          <ScalarProperty Name="cambio_labNuevo" ColumnName="cambio_labNuevo" />
+          <ScalarProperty Name="cambio_horaEntrada" ColumnName="cambio_horaEntrada" />
+          <ScalarProperty Name="cambio_horaSalida" ColumnName="cambio_horaSalida" />
+          <ScalarProperty Name="cambio_horaEntradaNueva" ColumnName="cambio_horaEntradaNueva" />
+          <ScalarProperty Name="cambio_horaSalidaNueva" ColumnName="cambio_horaSalidaNueva" />
+          <ScalarProperty Name="cambio_dia" ColumnName="cambio_dia" />
+          <ScalarProperty Name="cambio_diaNuevo" ColumnName="cambio_diaNuevo" />
+          <ScalarProperty Name="cambio_razonCambio" ColumnName="cambio_razonCambio" />
+          <ScalarProperty Name="cambio_fecha" ColumnName="cambio_fecha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CARRERA">
+      <EntityTypeMapping TypeName="DBLABModel.CARRERA">
+        <MappingFragment StoreEntitySet="CARRERA">
+          <ScalarProperty Name="car_id" ColumnName="car_id" />
+          <ScalarProperty Name="car_nombre" ColumnName="car_nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COMPARTIDOS">
+      <EntityTypeMapping TypeName="DBLABModel.COMPARTIDOS">
+        <MappingFragment StoreEntitySet="COMPARTIDOS">
+          <ScalarProperty Name="grpCom_serie" ColumnName="grpCom_serie" />
+          <ScalarProperty Name="grpCom_grpId" ColumnName="grpCom_grpId" />
+          <ScalarProperty Name="grpCom_materia" ColumnName="grpCom_materia" />
+          <ScalarProperty Name="grpCom_profesor" ColumnName="grpCom_profesor" />
+          <ScalarProperty Name="grpCom_carGrpUno" ColumnName="grpCom_carGrpUno" />
+          <ScalarProperty Name="grpCom_carGrpDos" ColumnName="grpCom_carGrpDos" />
+          <ScalarProperty Name="grpCom_grpUno" ColumnName="grpCom_grpUno" />
+          <ScalarProperty Name="grpCom_grpDos" ColumnName="grpCom_grpDos" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CURSOS">
+      <EntityTypeMapping TypeName="DBLABModel.CURSOS">
+        <MappingFragment StoreEntitySet="CURSOS">
+          <ScalarProperty Name="cur_id" ColumnName="cur_id" />
+          <ScalarProperty Name="cur_nombre" ColumnName="cur_nombre" />
+          <ScalarProperty Name="cur_profesorId" ColumnName="cur_profesorId" />
+          <ScalarProperty Name="cur_laboratorioId" ColumnName="cur_laboratorioId" />
+          <ScalarProperty Name="cur_horaEntrada" ColumnName="cur_horaEntrada" />
+          <ScalarProperty Name="cur_horaSalida" ColumnName="cur_horaSalida" />
+          <ScalarProperty Name="cur_fecha" ColumnName="cur_fecha" />
+          <ScalarProperty Name="cur_presentador" ColumnName="cur_presentador" />
+          <ScalarProperty Name="cur_periodo" ColumnName="cur_periodo" />
+          <ScalarProperty Name="cur_dia" ColumnName="cur_dia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DEPARTAMENTO">
+      <EntityTypeMapping TypeName="DBLABModel.DEPARTAMENTO">
+        <MappingFragment StoreEntitySet="DEPARTAMENTO">
+          <ScalarProperty Name="dep_id" ColumnName="dep_id" />
+          <ScalarProperty Name="dep_nombre" ColumnName="dep_nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FALTAS">
+      <EntityTypeMapping TypeName="DBLABModel.FALTAS">
+        <MappingFragment StoreEntitySet="FALTAS">
+          <ScalarProperty Name="fal_id" ColumnName="fal_id" />
+          <ScalarProperty Name="fal_profesorId" ColumnName="fal_profesorId" />
+          <ScalarProperty Name="fal_materiaId" ColumnName="fal_materiaId" />
+          <ScalarProperty Name="fal_grupoId" ColumnName="fal_grupoId" />
+          <ScalarProperty Name="fal_laboratorioId" ColumnName="fal_laboratorioId" />
+          <ScalarProperty Name="fal_hora" ColumnName="fal_hora" />
+          <ScalarProperty Name="fal_motivo" ColumnName="fal_motivo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HORARIO">
+      <EntityTypeMapping TypeName="DBLABModel.HORARIO">
+        <MappingFragment StoreEntitySet="HORARIO">
+          <ScalarProperty Name="hora_id" ColumnName="hora_id" />
+          <ScalarProperty Name="hora_grupoId" ColumnName="hora_grupoId" />
+          <ScalarProperty Name="hora_materiaId" ColumnName="hora_materiaId" />
+          <ScalarProperty Name="hora_profesorId" ColumnName="hora_profesorId" />
+          <ScalarProperty Name="hora_laboratorioId" ColumnName="hora_laboratorioId" />
+          <ScalarProperty Name="hora_horaEntrada" ColumnName="hora_horaEntrada" />
+          <ScalarProperty Name="hora_horaSalida" ColumnName="hora_horaSalida" />
+          <ScalarProperty Name="hora_dia" ColumnName="hora_dia" />
+          <ScalarProperty Name="hora_serie" ColumnName="hora_serie" />
+          <ScalarProperty Name="hora_periodo" ColumnName="hora_periodo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LABORATORIO">
+      <EntityTypeMapping TypeName="DBLABModel.LABORATORIO">
+        <MappingFragment StoreEntitySet="LABORATORIO">
+          <ScalarProperty Name="lab_id" ColumnName="lab_id" />
+          <ScalarProperty Name="lab_nombre" ColumnName="lab_nombre" />
+          <ScalarProperty Name="lab_capacidad" ColumnName="lab_capacidad" />
+          <ScalarProperty Name="lab_descripcion" ColumnName="lab_descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MATERIA">
+      <EntityTypeMapping TypeName="DBLABModel.MATERIA">
+        <MappingFragment StoreEntitySet="MATERIA">
+          <ScalarProperty Name="mat_id" ColumnName="mat_id" />
+          <ScalarProperty Name="mat_nombre" ColumnName="mat_nombre" />
+          <ScalarProperty Name="mat_semestre" ColumnName="mat_semestre" />
+          <ScalarProperty Name="mat_carrera" ColumnName="mat_carrera" />
+          <ScalarProperty Name="mat_horasp" ColumnName="mat_horasp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MATGRP">
+      <EntityTypeMapping TypeName="DBLABModel.MATGRP">
+        <MappingFragment StoreEntitySet="MATGRP">
+          <ScalarProperty Name="matgrp_nombre" ColumnName="matgrp_nombre" />
+          <ScalarProperty Name="materia" ColumnName="materia" />
+          <ScalarProperty Name="grupo" ColumnName="grupo" />
+          <ScalarProperty Name="hora" ColumnName="hora" />
+          <ScalarProperty Name="periodo" ColumnName="periodo" />
+          <ScalarProperty Name="matgrp_serie" ColumnName="matgrp_serie" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PERFIL">
+      <EntityTypeMapping TypeName="DBLABModel.PERFIL">
+        <MappingFragment StoreEntitySet="PERFIL">
+          <ScalarProperty Name="pfl_id" ColumnName="pfl_id" />
+          <ScalarProperty Name="pfl_nombre" ColumnName="pfl_nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PERIODO">
+      <EntityTypeMapping TypeName="DBLABModel.PERIODO">
+        <MappingFragment StoreEntitySet="PERIODO">
+          <ScalarProperty Name="per_id" ColumnName="per_id" />
+          <ScalarProperty Name="per_año" ColumnName="per_año" />
+          <ScalarProperty Name="per_semestre" ColumnName="per_semestre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PROFESOR">
+      <EntityTypeMapping TypeName="DBLABModel.PROFESOR">
+        <MappingFragment StoreEntitySet="PROFESOR">
+          <ScalarProperty Name="prf_id" ColumnName="prf_id" />
+          <ScalarProperty Name="prf_nombreCompleto" ColumnName="prf_nombreCompleto" />
+          <ScalarProperty Name="prf_contrato" ColumnName="prf_contrato" />
+          <ScalarProperty Name="prf_telefono" ColumnName="prf_telefono" />
+          <ScalarProperty Name="prf_correo" ColumnName="prf_correo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="DBLABModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIO">
+      <EntityTypeMapping TypeName="DBLABModel.USUARIO">
+        <MappingFragment StoreEntitySet="USUARIO">
+          <ScalarProperty Name="usu_noControl" ColumnName="usu_noControl" />
+          <ScalarProperty Name="usu_id" ColumnName="usu_id" />
+          <ScalarProperty Name="usu_nombre" ColumnName="usu_nombre" />
+          <ScalarProperty Name="usu_apPaterno" ColumnName="usu_apPaterno" />
+          <ScalarProperty Name="usu_apMaterno" ColumnName="usu_apMaterno" />
+          <ScalarProperty Name="usu_contrasena" ColumnName="usu_contrasena" />
+          <ScalarProperty Name="usu_correo" ColumnName="usu_correo" />
+          <ScalarProperty Name="usu_pefilId" ColumnName="usu_pefilId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="DBLABModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="DBLABModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="DBLABModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_getAcceso" FunctionName="DBLABModel.Store.sp_getAcceso" />
+    <FunctionImportMapping FunctionImportName="sp_getAsistencia" FunctionName="DBLABModel.Store.sp_getAsistencia" />
+    <FunctionImportMapping FunctionImportName="sp_getCambio" FunctionName="DBLABModel.Store.sp_getCambio" />
+    <FunctionImportMapping FunctionImportName="sp_getCurso" FunctionName="DBLABModel.Store.sp_getCurso" />
+    <FunctionImportMapping FunctionImportName="sp_getFalta" FunctionName="DBLABModel.Store.sp_getFalta" />
+    <FunctionImportMapping FunctionImportName="sp_getGrupo" FunctionName="DBLABModel.Store.sp_getGrupo" />
+    <FunctionImportMapping FunctionImportName="sp_getHorario" FunctionName="DBLABModel.Store.sp_getHorario" />
+    <FunctionImportMapping FunctionImportName="sp_getPeriodo" FunctionName="DBLABModel.Store.sp_getPeriodo" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="DBLABModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBLABModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="DBLABModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBLABModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="DBLABModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="DBLABModel.Store.sp_upgraddiagrams" />
+    <EntitySetMapping Name="BITACORA">
+      <EntityTypeMapping TypeName="DBLABModel.BITACORA">
+        <MappingFragment StoreEntitySet="BITACORA">
+          <ScalarProperty Name="bit_fecha" ColumnName="bit_fecha" />
+          <ScalarProperty Name="bit_descripcion" ColumnName="bit_descripcion" />
+          <ScalarProperty Name="bit_usuario" ColumnName="bit_usuario" />
+          <ScalarProperty Name="bit_id" ColumnName="bit_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_getBitacora" FunctionName="DBLABModel.Store.sp_getBitacora" />
+    <FunctionImportMapping FunctionImportName="sp_getUsuario" FunctionName="DBLABModel.Store.sp_getUsuario" />
+  </EntityContainerMapping>
+</Mapping>

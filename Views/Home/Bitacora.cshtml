@@ -1,0 +1,28 @@
+﻿<!--CSS-->
+<link rel="stylesheet" type="text/css" href="~/Content/bitacora.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/global.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/font-awesome.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/styles.css" />
+
+<!--Titulo de pestaña-->
+<title>Registro de bitacora</title>
+
+<!--Titulo-->
+<h2 id="titulo">Bitacora</h2>
+
+<!--Usuario logeado-->
+<label id="txtUsuario" style="display:none">@Html.Raw(ViewBag.userId)</label>
+
+<!--Panel principal-->
+<div id="info">
+    Actividades: <input type="text" class="cajas txtSearch" id="txtActividades" />    
+    Observaciones:<textarea cols="25" rows="5" class="cajas" id="txtObservaciones"></textarea>
+</div>
+
+<!--Botones-->
+<input type="submit" value="Aceptar" id="btnAceptar" onclick="validar()" />
+<input type="submit" value="Cancelar" id="btnCancelar" onclick="limpiar()" />
+
+<!--Script-->
+<script src="~/Scripts/global.js"></script>
+<script src="~/Scripts/bitacora.js"></script>

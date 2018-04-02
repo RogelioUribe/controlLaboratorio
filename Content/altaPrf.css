@@ -1,0 +1,26 @@
+﻿@media only screen and (min-width: 230px) {
+    #titulo{ margin-top:60px; }
+    #info{ width:250px;}    
+    .txtSearch{ width:200px; }
+    .txtDefault{ width:200px; }
+    #txtNombre{text-transform:uppercase;} 
+    #Search{ text-transform:uppercase; width:140px; }       
+}
+
+
+@media only screen and (min-width: 320px) {
+    #info{ width:280px;}    
+    .txtDefault, .txtSearch{ width:234px; }        
+    #Search{ width:200px; } 
+}
+
+@media only screen and (min-width: 480px) {
+    #info{ width:420px;}        
+    #txtNombre{ margin-left:9px; }
+    #txtNoEmp{ margin-left:37px; }
+    #txtContrato{ margin-left:76px; }
+    #txtTelefono{ margin-left:72px; }
+    #txtCorreo{ margin-left:86px; }
+}
+
+

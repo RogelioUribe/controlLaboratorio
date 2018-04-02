@@ -1,0 +1,1276 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DBLABModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ACCESO">
+          <Key>
+            <PropertyRef Name="acc_id" />
+          </Key>
+          <Property Name="acc_id" Type="int" Nullable="false" />
+          <Property Name="acc_usuario" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="acc_numeroId" Type="int" Nullable="false" />
+          <Property Name="acc_laboratorioId" Type="varchar" MaxLength="10" />
+          <Property Name="acc_maquina" Type="varchar" MaxLength="3" />
+          <Property Name="acc_horaEntrada" Type="time" Precision="7" Nullable="false" />
+          <Property Name="acc_fecha" Type="date" />
+          <Property Name="acc_periodo" Type="varchar" MaxLength="20" />
+          <Property Name="acc_materia" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ASISTENCIA">
+          <Key>
+            <PropertyRef Name="asis_id" />
+          </Key>
+          <Property Name="asis_id" Type="int" Nullable="false" />
+          <Property Name="asis_profesorId" Type="int" />
+          <Property Name="asis_materiaId" Type="varchar" MaxLength="10" />
+          <Property Name="asis_grupoId" Type="varchar" MaxLength="10" />
+          <Property Name="asis_laboratorioId" Type="varchar" MaxLength="10" />
+          <Property Name="asis_alumnos" Type="int" />
+          <Property Name="asis_horaEntrada" Type="time" Precision="7" />
+          <Property Name="asis_horaSalida" Type="time" Precision="7" />
+          <Property Name="asis_fecha" Type="date" />
+          <Property Name="asis_periodo" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="BITACORA">
+          <Key>
+            <PropertyRef Name="bit_id" />
+          </Key>
+          <Property Name="bit_id" Type="int" Nullable="false" />
+          <Property Name="bit_usuario" Type="varchar" MaxLength="30" />
+          <Property Name="bit_descripcion" Type="varchar" MaxLength="1000" />
+          <Property Name="bit_fecha" Type="date" />
+        </EntityType>
+        <EntityType Name="CAMBIOS">
+          <Key>
+            <PropertyRef Name="cambio_id" />
+          </Key>
+          <Property Name="cambio_id" Type="int" Nullable="false" />
+          <Property Name="cambio_serieGrp" Type="varchar" MaxLength="50" />
+          <Property Name="cambio_lab" Type="varchar" MaxLength="10" />
+          <Property Name="cambio_labNuevo" Type="varchar" MaxLength="10" />
+          <Property Name="cambio_horaEntrada" Type="varchar" MaxLength="20" />
+          <Property Name="cambio_horaSalida" Type="varchar" MaxLength="20" />
+          <Property Name="cambio_horaEntradaNueva" Type="varchar" MaxLength="20" />
+          <Property Name="cambio_horaSalidaNueva" Type="varchar" MaxLength="20" />
+          <Property Name="cambio_dia" Type="varchar" MaxLength="20" />
+          <Property Name="cambio_diaNuevo" Type="varchar" MaxLength="20" />
+          <Property Name="cambio_razonCambio" Type="varchar" MaxLength="1000" />
+          <Property Name="cambio_fecha" Type="varchar" MaxLength="15" />
+          <Property Name="cam_periodo" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="CARRERA">
+          <Key>
+            <PropertyRef Name="car_id" />
+          </Key>
+          <Property Name="car_id" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="car_nombre" Type="varchar" MaxLength="80" />
+        </EntityType>
+        <EntityType Name="COMPARTIDOS">
+          <Key>
+            <PropertyRef Name="grpCom_serie" />
+          </Key>
+          <Property Name="grpCom_serie" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="grpCom_grpId" Type="varchar" MaxLength="5" />
+          <Property Name="grpCom_materia" Type="varchar" MaxLength="100" />
+          <Property Name="grpCom_profesor" Type="int" />
+          <Property Name="grpCom_carGrpUno" Type="varchar" MaxLength="10" />
+          <Property Name="grpCom_carGrpDos" Type="varchar" MaxLength="10" />
+          <Property Name="grpCom_grpUno" Type="varchar" MaxLength="5" />
+          <Property Name="grpCom_grpDos" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="CURSOS">
+          <Key>
+            <PropertyRef Name="cur_id" />
+          </Key>
+          <Property Name="cur_id" Type="int" Nullable="false" />
+          <Property Name="cur_nombre" Type="varchar" MaxLength="100" />
+          <Property Name="cur_profesorId" Type="int" />
+          <Property Name="cur_laboratorioId" Type="varchar" MaxLength="10" />
+          <Property Name="cur_horaEntrada" Type="time" Precision="7" Nullable="false" />
+          <Property Name="cur_horaSalida" Type="time" Precision="7" Nullable="false" />
+          <Property Name="cur_fecha" Type="date" Nullable="false" />
+          <Property Name="cur_presentador" Type="varchar" MaxLength="50" />
+          <Property Name="cur_periodo" Type="varchar" MaxLength="20" />
+          <Property Name="cur_dia" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="DEPARTAMENTO">
+          <Key>
+            <PropertyRef Name="dep_id" />
+          </Key>
+          <Property Name="dep_id" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="dep_nombre" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="FALTAS">
+          <Key>
+            <PropertyRef Name="fal_id" />
+          </Key>
+          <Property Name="fal_id" Type="int" Nullable="false" />
+          <Property Name="fal_profesorId" Type="int" />
+          <Property Name="fal_materiaId" Type="varchar" MaxLength="10" />
+          <Property Name="fal_grupoId" Type="int" />
+          <Property Name="fal_laboratorioId" Type="varchar" MaxLength="10" />
+          <Property Name="fal_hora" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fal_motivo" Type="varchar" MaxLength="1000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HORARIO">
+          <Key>
+            <PropertyRef Name="hora_id" />
+          </Key>
+          <Property Name="hora_id" Type="int" Nullable="false" />
+          <Property Name="hora_grupoId" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="hora_materiaId" Type="varchar" MaxLength="10" />
+          <Property Name="hora_profesorId" Type="int" />
+          <Property Name="hora_laboratorioId" Type="varchar" MaxLength="10" />
+          <Property Name="hora_horaEntrada" Type="time" Precision="7" Nullable="false" />
+          <Property Name="hora_horaSalida" Type="time" Precision="7" Nullable="false" />
+          <Property Name="hora_dia" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="hora_serie" Type="varchar" MaxLength="50" />
+          <Property Name="hora_periodo" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="LABORATORIO">
+          <Key>
+            <PropertyRef Name="lab_id" />
+          </Key>
+          <Property Name="lab_id" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="lab_nombre" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="lab_capacidad" Type="int" />
+          <Property Name="lab_descripcion" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="MATERIA">
+          <Key>
+            <PropertyRef Name="mat_id" />
+          </Key>
+          <Property Name="mat_id" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="mat_nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="mat_semestre" Type="int" />
+          <Property Name="mat_carrera" Type="varchar" MaxLength="10" />
+          <Property Name="mat_horasp" Type="int" />
+        </EntityType>
+        <EntityType Name="MATGRP">
+          <Key>
+            <PropertyRef Name="matgrp_nombre" />
+          </Key>
+          <Property Name="matgrp_nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="materia" Type="varchar" MaxLength="50" />
+          <Property Name="grupo" Type="varchar" MaxLength="5" />
+          <Property Name="hora" Type="int" />
+          <Property Name="periodo" Type="varchar" MaxLength="20" />
+          <Property Name="matgrp_serie" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="PERFIL">
+          <Key>
+            <PropertyRef Name="pfl_id" />
+          </Key>
+          <Property Name="pfl_id" Type="int" Nullable="false" />
+          <Property Name="pfl_nombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PERIODO">
+          <Key>
+            <PropertyRef Name="per_id" />
+          </Key>
+          <Property Name="per_id" Type="int" Nullable="false" />
+          <Property Name="per_año" Type="varchar" MaxLength="5" />
+          <Property Name="per_semestre" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="PROFESOR">
+          <Key>
+            <PropertyRef Name="prf_id" />
+          </Key>
+          <Property Name="prf_id" Type="int" Nullable="false" />
+          <Property Name="prf_nombreCompleto" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="prf_contrato" Type="varchar" MaxLength="50" />
+          <Property Name="prf_telefono" Type="varchar" MaxLength="13" />
+          <Property Name="prf_correo" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="usu_id" />
+          </Key>
+          <Property Name="usu_id" Type="int" Nullable="false" />
+          <Property Name="usu_nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="usu_apPaterno" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="usu_apMaterno" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="usu_contrasena" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="usu_correo" Type="varchar" MaxLength="50" />
+          <Property Name="usu_pefilId" Type="int" />
+          <Property Name="usu_noControl" Type="int" />
+        </EntityType>
+        <Association Name="FK_ACCESO_LABORATORIO">
+          <End Role="LABORATORIO" Type="Self.LABORATORIO" Multiplicity="0..1" />
+          <End Role="ACCESO" Type="Self.ACCESO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LABORATORIO">
+              <PropertyRef Name="lab_id" />
+            </Principal>
+            <Dependent Role="ACCESO">
+              <PropertyRef Name="acc_laboratorioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ASISTENCIA_LABORATORIO">
+          <End Role="LABORATORIO" Type="Self.LABORATORIO" Multiplicity="0..1" />
+          <End Role="ASISTENCIA" Type="Self.ASISTENCIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LABORATORIO">
+              <PropertyRef Name="lab_id" />
+            </Principal>
+            <Dependent Role="ASISTENCIA">
+              <PropertyRef Name="asis_laboratorioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ASISTENCIA_MATERIA">
+          <End Role="MATERIA" Type="Self.MATERIA" Multiplicity="0..1" />
+          <End Role="ASISTENCIA" Type="Self.ASISTENCIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MATERIA">
+              <PropertyRef Name="mat_id" />
+            </Principal>
+            <Dependent Role="ASISTENCIA">
+              <PropertyRef Name="asis_materiaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ASISTENCIA_PROFESOR">
+          <End Role="PROFESOR" Type="Self.PROFESOR" Multiplicity="0..1" />
+          <End Role="ASISTENCIA" Type="Self.ASISTENCIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROFESOR">
+              <PropertyRef Name="prf_id" />
+            </Principal>
+            <Dependent Role="ASISTENCIA">
+              <PropertyRef Name="asis_profesorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CURSOS_LABORATORIO">
+          <End Role="LABORATORIO" Type="Self.LABORATORIO" Multiplicity="0..1" />
+          <End Role="CURSOS" Type="Self.CURSOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LABORATORIO">
+              <PropertyRef Name="lab_id" />
+            </Principal>
+            <Dependent Role="CURSOS">
+              <PropertyRef Name="cur_laboratorioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CURSOS_PROFESOR">
+          <End Role="PROFESOR" Type="Self.PROFESOR" Multiplicity="0..1" />
+          <End Role="CURSOS" Type="Self.CURSOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROFESOR">
+              <PropertyRef Name="prf_id" />
+            </Principal>
+            <Dependent Role="CURSOS">
+              <PropertyRef Name="cur_profesorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FALTAS_LABORATORIO">
+          <End Role="LABORATORIO" Type="Self.LABORATORIO" Multiplicity="0..1" />
+          <End Role="FALTAS" Type="Self.FALTAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LABORATORIO">
+              <PropertyRef Name="lab_id" />
+            </Principal>
+            <Dependent Role="FALTAS">
+              <PropertyRef Name="fal_laboratorioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FALTAS_MATERIA">
+          <End Role="MATERIA" Type="Self.MATERIA" Multiplicity="0..1" />
+          <End Role="FALTAS" Type="Self.FALTAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MATERIA">
+              <PropertyRef Name="mat_id" />
+            </Principal>
+            <Dependent Role="FALTAS">
+              <PropertyRef Name="fal_materiaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HORARIO_LABORATORIO">
+          <End Role="LABORATORIO" Type="Self.LABORATORIO" Multiplicity="0..1" />
+          <End Role="HORARIO" Type="Self.HORARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LABORATORIO">
+              <PropertyRef Name="lab_id" />
+            </Principal>
+            <Dependent Role="HORARIO">
+              <PropertyRef Name="hora_laboratorioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HORARIO_MATERIA">
+          <End Role="MATERIA" Type="Self.MATERIA" Multiplicity="0..1" />
+          <End Role="HORARIO" Type="Self.HORARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MATERIA">
+              <PropertyRef Name="mat_id" />
+            </Principal>
+            <Dependent Role="HORARIO">
+              <PropertyRef Name="hora_materiaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HORARIO_PROFESOR">
+          <End Role="PROFESOR" Type="Self.PROFESOR" Multiplicity="0..1" />
+          <End Role="HORARIO" Type="Self.HORARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROFESOR">
+              <PropertyRef Name="prf_id" />
+            </Principal>
+            <Dependent Role="HORARIO">
+              <PropertyRef Name="hora_profesorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MATERIA_CARRERA">
+          <End Role="CARRERA" Type="Self.CARRERA" Multiplicity="0..1" />
+          <End Role="MATERIA" Type="Self.MATERIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CARRERA">
+              <PropertyRef Name="car_id" />
+            </Principal>
+            <Dependent Role="MATERIA">
+              <PropertyRef Name="mat_carrera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIO_PERFIL">
+          <End Role="PERFIL" Type="Self.PERFIL" Multiplicity="0..1" />
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERFIL">
+              <PropertyRef Name="pfl_id" />
+            </Principal>
+            <Dependent Role="USUARIO">
+              <PropertyRef Name="usu_pefilId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_getAcceso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_getAsistencia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_getBitacora" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_getCambio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_getCurso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_getFalta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_getGrupo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_getHorario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_getPeriodo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_getUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="DBLABModelStoreContainer">
+          <EntitySet Name="ACCESO" EntityType="Self.ACCESO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ASISTENCIA" EntityType="Self.ASISTENCIA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BITACORA" EntityType="Self.BITACORA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CAMBIOS" EntityType="Self.CAMBIOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CARRERA" EntityType="Self.CARRERA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COMPARTIDOS" EntityType="Self.COMPARTIDOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CURSOS" EntityType="Self.CURSOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DEPARTAMENTO" EntityType="Self.DEPARTAMENTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FALTAS" EntityType="Self.FALTAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HORARIO" EntityType="Self.HORARIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LABORATORIO" EntityType="Self.LABORATORIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MATERIA" EntityType="Self.MATERIA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MATGRP" EntityType="Self.MATGRP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PERFIL" EntityType="Self.PERFIL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PERIODO" EntityType="Self.PERIODO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROFESOR" EntityType="Self.PROFESOR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ACCESO_LABORATORIO" Association="Self.FK_ACCESO_LABORATORIO">
+            <End Role="LABORATORIO" EntitySet="LABORATORIO" />
+            <End Role="ACCESO" EntitySet="ACCESO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ASISTENCIA_LABORATORIO" Association="Self.FK_ASISTENCIA_LABORATORIO">
+            <End Role="LABORATORIO" EntitySet="LABORATORIO" />
+            <End Role="ASISTENCIA" EntitySet="ASISTENCIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ASISTENCIA_MATERIA" Association="Self.FK_ASISTENCIA_MATERIA">
+            <End Role="MATERIA" EntitySet="MATERIA" />
+            <End Role="ASISTENCIA" EntitySet="ASISTENCIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ASISTENCIA_PROFESOR" Association="Self.FK_ASISTENCIA_PROFESOR">
+            <End Role="PROFESOR" EntitySet="PROFESOR" />
+            <End Role="ASISTENCIA" EntitySet="ASISTENCIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CURSOS_LABORATORIO" Association="Self.FK_CURSOS_LABORATORIO">
+            <End Role="LABORATORIO" EntitySet="LABORATORIO" />
+            <End Role="CURSOS" EntitySet="CURSOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CURSOS_PROFESOR" Association="Self.FK_CURSOS_PROFESOR">
+            <End Role="PROFESOR" EntitySet="PROFESOR" />
+            <End Role="CURSOS" EntitySet="CURSOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FALTAS_LABORATORIO" Association="Self.FK_FALTAS_LABORATORIO">
+            <End Role="LABORATORIO" EntitySet="LABORATORIO" />
+            <End Role="FALTAS" EntitySet="FALTAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FALTAS_MATERIA" Association="Self.FK_FALTAS_MATERIA">
+            <End Role="MATERIA" EntitySet="MATERIA" />
+            <End Role="FALTAS" EntitySet="FALTAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HORARIO_LABORATORIO" Association="Self.FK_HORARIO_LABORATORIO">
+            <End Role="LABORATORIO" EntitySet="LABORATORIO" />
+            <End Role="HORARIO" EntitySet="HORARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HORARIO_MATERIA" Association="Self.FK_HORARIO_MATERIA">
+            <End Role="MATERIA" EntitySet="MATERIA" />
+            <End Role="HORARIO" EntitySet="HORARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HORARIO_PROFESOR" Association="Self.FK_HORARIO_PROFESOR">
+            <End Role="PROFESOR" EntitySet="PROFESOR" />
+            <End Role="HORARIO" EntitySet="HORARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MATERIA_CARRERA" Association="Self.FK_MATERIA_CARRERA">
+            <End Role="CARRERA" EntitySet="CARRERA" />
+            <End Role="MATERIA" EntitySet="MATERIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIO_PERFIL" Association="Self.FK_USUARIO_PERFIL">
+            <End Role="PERFIL" EntitySet="PERFIL" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBLABModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ACCESO">
+          <Key>
+            <PropertyRef Name="acc_id" />
+          </Key>
+          <Property Name="acc_id" Type="Int32" Nullable="false" />
+          <Property Name="acc_usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="acc_numeroId" Type="Int32" Nullable="false" />
+          <Property Name="acc_laboratorioId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="acc_maquina" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="acc_horaEntrada" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="acc_fecha" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="LABORATORIO" Relationship="Self.FK_ACCESO_LABORATORIO" FromRole="ACCESO" ToRole="LABORATORIO" />
+          <Property Name="acc_periodo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="acc_materia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ASISTENCIA">
+          <Key>
+            <PropertyRef Name="asis_id" />
+          </Key>
+          <Property Name="asis_id" Type="Int32" Nullable="false" />
+          <Property Name="asis_profesorId" Type="Int32" />
+          <Property Name="asis_materiaId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="asis_grupoId" Type="String" FixedLength="false" Unicode="false" MaxLength="10" />
+          <Property Name="asis_laboratorioId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="asis_alumnos" Type="Int32" />
+          <Property Name="asis_horaEntrada" Type="Time" Precision="7" />
+          <Property Name="asis_horaSalida" Type="Time" Precision="7" />
+          <Property Name="asis_fecha" Type="DateTime" Precision="0" />
+          <Property Name="asis_periodo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LABORATORIO" Relationship="Self.FK_ASISTENCIA_LABORATORIO" FromRole="ASISTENCIA" ToRole="LABORATORIO" />
+          <NavigationProperty Name="MATERIA" Relationship="Self.FK_ASISTENCIA_MATERIA" FromRole="ASISTENCIA" ToRole="MATERIA" />
+          <NavigationProperty Name="PROFESOR" Relationship="Self.FK_ASISTENCIA_PROFESOR" FromRole="ASISTENCIA" ToRole="PROFESOR" />
+        </EntityType>
+        <EntityType Name="CAMBIOS">
+          <Key>
+            <PropertyRef Name="cambio_id" />
+          </Key>
+          <Property Name="cambio_id" Type="Int32" Nullable="false" />
+          <Property Name="cambio_serieGrp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cambio_lab" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="cambio_labNuevo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="cambio_horaEntrada" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cambio_horaSalida" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cambio_horaEntradaNueva" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cambio_horaSalidaNueva" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cambio_dia" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cambio_diaNuevo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cambio_razonCambio" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="cambio_fecha" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="cam_periodo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CARRERA">
+          <Key>
+            <PropertyRef Name="car_id" />
+          </Key>
+          <Property Name="car_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="car_nombre" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MATERIA" Relationship="Self.FK_MATERIA_CARRERA" FromRole="CARRERA" ToRole="MATERIA" />
+        </EntityType>
+        <EntityType Name="COMPARTIDOS">
+          <Key>
+            <PropertyRef Name="grpCom_serie" />
+          </Key>
+          <Property Name="grpCom_serie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="grpCom_grpId" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="grpCom_materia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="grpCom_profesor" Type="Int32" />
+          <Property Name="grpCom_carGrpUno" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="grpCom_carGrpDos" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="grpCom_grpUno" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="grpCom_grpDos" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CURSOS">
+          <Key>
+            <PropertyRef Name="cur_id" />
+          </Key>
+          <Property Name="cur_id" Type="Int32" Nullable="false" />
+          <Property Name="cur_nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cur_profesorId" Type="Int32" />
+          <Property Name="cur_laboratorioId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="cur_horaEntrada" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="cur_horaSalida" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="cur_fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="cur_presentador" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cur_periodo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cur_dia" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LABORATORIO" Relationship="Self.FK_CURSOS_LABORATORIO" FromRole="CURSOS" ToRole="LABORATORIO" />
+          <NavigationProperty Name="PROFESOR" Relationship="Self.FK_CURSOS_PROFESOR" FromRole="CURSOS" ToRole="PROFESOR" />
+        </EntityType>
+        <EntityType Name="DEPARTAMENTO">
+          <Key>
+            <PropertyRef Name="dep_id" />
+          </Key>
+          <Property Name="dep_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dep_nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="FALTAS">
+          <Key>
+            <PropertyRef Name="fal_id" />
+          </Key>
+          <Property Name="fal_id" Type="Int32" Nullable="false" />
+          <Property Name="fal_profesorId" Type="Int32" />
+          <Property Name="fal_materiaId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="fal_grupoId" Type="Int32" />
+          <Property Name="fal_laboratorioId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="fal_hora" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fal_motivo" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="LABORATORIO" Relationship="Self.FK_FALTAS_LABORATORIO" FromRole="FALTAS" ToRole="LABORATORIO" />
+          <NavigationProperty Name="MATERIA" Relationship="Self.FK_FALTAS_MATERIA" FromRole="FALTAS" ToRole="MATERIA" />
+        </EntityType>
+        <EntityType Name="HORARIO">
+          <Key>
+            <PropertyRef Name="hora_id" />
+          </Key>
+          <Property Name="hora_id" Type="Int32" Nullable="false" />
+          <Property Name="hora_grupoId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="hora_materiaId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="hora_profesorId" Type="Int32" />
+          <Property Name="hora_laboratorioId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="hora_horaEntrada" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="hora_horaSalida" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="hora_dia" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="hora_serie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hora_periodo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LABORATORIO" Relationship="Self.FK_HORARIO_LABORATORIO" FromRole="HORARIO" ToRole="LABORATORIO" />
+          <NavigationProperty Name="MATERIA" Relationship="Self.FK_HORARIO_MATERIA" FromRole="HORARIO" ToRole="MATERIA" />
+          <NavigationProperty Name="PROFESOR" Relationship="Self.FK_HORARIO_PROFESOR" FromRole="HORARIO" ToRole="PROFESOR" />
+        </EntityType>
+        <EntityType Name="LABORATORIO">
+          <Key>
+            <PropertyRef Name="lab_id" />
+          </Key>
+          <Property Name="lab_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lab_nombre" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lab_capacidad" Type="Int32" />
+          <Property Name="lab_descripcion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ACCESO" Relationship="Self.FK_ACCESO_LABORATORIO" FromRole="LABORATORIO" ToRole="ACCESO" />
+          <NavigationProperty Name="ASISTENCIA" Relationship="Self.FK_ASISTENCIA_LABORATORIO" FromRole="LABORATORIO" ToRole="ASISTENCIA" />
+          <NavigationProperty Name="CURSOS" Relationship="Self.FK_CURSOS_LABORATORIO" FromRole="LABORATORIO" ToRole="CURSOS" />
+          <NavigationProperty Name="FALTAS" Relationship="Self.FK_FALTAS_LABORATORIO" FromRole="LABORATORIO" ToRole="FALTAS" />
+          <NavigationProperty Name="HORARIO" Relationship="Self.FK_HORARIO_LABORATORIO" FromRole="LABORATORIO" ToRole="HORARIO" />
+        </EntityType>
+        <EntityType Name="MATERIA">
+          <Key>
+            <PropertyRef Name="mat_id" />
+          </Key>
+          <Property Name="mat_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mat_nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mat_semestre" Type="Int32" />
+          <Property Name="mat_carrera" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="mat_horasp" Type="Int32" />
+          <NavigationProperty Name="ASISTENCIA" Relationship="Self.FK_ASISTENCIA_MATERIA" FromRole="MATERIA" ToRole="ASISTENCIA" />
+          <NavigationProperty Name="CARRERA" Relationship="Self.FK_MATERIA_CARRERA" FromRole="MATERIA" ToRole="CARRERA" />
+          <NavigationProperty Name="FALTAS" Relationship="Self.FK_FALTAS_MATERIA" FromRole="MATERIA" ToRole="FALTAS" />
+          <NavigationProperty Name="HORARIO" Relationship="Self.FK_HORARIO_MATERIA" FromRole="MATERIA" ToRole="HORARIO" />
+        </EntityType>
+        <EntityType Name="MATGRP">
+          <Key>
+            <PropertyRef Name="matgrp_nombre" />
+          </Key>
+          <Property Name="matgrp_nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="materia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="grupo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="hora" Type="Int32" />
+          <Property Name="periodo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="matgrp_serie" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PERFIL">
+          <Key>
+            <PropertyRef Name="pfl_id" />
+          </Key>
+          <Property Name="pfl_id" Type="Int32" Nullable="false" />
+          <Property Name="pfl_nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.FK_USUARIO_PERFIL" FromRole="PERFIL" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="PERIODO">
+          <Key>
+            <PropertyRef Name="per_id" />
+          </Key>
+          <Property Name="per_id" Type="Int32" Nullable="false" />
+          <Property Name="per_año" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="per_semestre" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PROFESOR">
+          <Key>
+            <PropertyRef Name="prf_id" />
+          </Key>
+          <Property Name="prf_id" Type="Int32" Nullable="false" />
+          <Property Name="prf_nombreCompleto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prf_contrato" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="prf_telefono" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="prf_correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ASISTENCIA" Relationship="Self.FK_ASISTENCIA_PROFESOR" FromRole="PROFESOR" ToRole="ASISTENCIA" />
+          <NavigationProperty Name="CURSOS" Relationship="Self.FK_CURSOS_PROFESOR" FromRole="PROFESOR" ToRole="CURSOS" />
+          <NavigationProperty Name="HORARIO" Relationship="Self.FK_HORARIO_PROFESOR" FromRole="PROFESOR" ToRole="HORARIO" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="usu_id" />
+          </Key>
+          <Property Name="usu_id" Type="Int32" Nullable="false" />
+          <Property Name="usu_nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usu_apPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usu_apMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usu_contrasena" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usu_correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usu_pefilId" Type="Int32" />
+          <NavigationProperty Name="PERFIL" Relationship="Self.FK_USUARIO_PERFIL" FromRole="USUARIO" ToRole="PERFIL" />
+          <Property Name="usu_noControl" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_ACCESO_LABORATORIO">
+          <End Role="LABORATORIO" Type="Self.LABORATORIO" Multiplicity="0..1" />
+          <End Role="ACCESO" Type="Self.ACCESO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LABORATORIO">
+              <PropertyRef Name="lab_id" />
+            </Principal>
+            <Dependent Role="ACCESO">
+              <PropertyRef Name="acc_laboratorioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ASISTENCIA_LABORATORIO">
+          <End Role="LABORATORIO" Type="Self.LABORATORIO" Multiplicity="0..1" />
+          <End Role="ASISTENCIA" Type="Self.ASISTENCIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LABORATORIO">
+              <PropertyRef Name="lab_id" />
+            </Principal>
+            <Dependent Role="ASISTENCIA">
+              <PropertyRef Name="asis_laboratorioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ASISTENCIA_MATERIA">
+          <End Role="MATERIA" Type="Self.MATERIA" Multiplicity="0..1" />
+          <End Role="ASISTENCIA" Type="Self.ASISTENCIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MATERIA">
+              <PropertyRef Name="mat_id" />
+            </Principal>
+            <Dependent Role="ASISTENCIA">
+              <PropertyRef Name="asis_materiaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ASISTENCIA_PROFESOR">
+          <End Role="PROFESOR" Type="Self.PROFESOR" Multiplicity="0..1" />
+          <End Role="ASISTENCIA" Type="Self.ASISTENCIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROFESOR">
+              <PropertyRef Name="prf_id" />
+            </Principal>
+            <Dependent Role="ASISTENCIA">
+              <PropertyRef Name="asis_profesorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MATERIA_CARRERA">
+          <End Role="CARRERA" Type="Self.CARRERA" Multiplicity="0..1" />
+          <End Role="MATERIA" Type="Self.MATERIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CARRERA">
+              <PropertyRef Name="car_id" />
+            </Principal>
+            <Dependent Role="MATERIA">
+              <PropertyRef Name="mat_carrera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CURSOS_LABORATORIO">
+          <End Role="LABORATORIO" Type="Self.LABORATORIO" Multiplicity="0..1" />
+          <End Role="CURSOS" Type="Self.CURSOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LABORATORIO">
+              <PropertyRef Name="lab_id" />
+            </Principal>
+            <Dependent Role="CURSOS">
+              <PropertyRef Name="cur_laboratorioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CURSOS_PROFESOR">
+          <End Role="PROFESOR" Type="Self.PROFESOR" Multiplicity="0..1" />
+          <End Role="CURSOS" Type="Self.CURSOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROFESOR">
+              <PropertyRef Name="prf_id" />
+            </Principal>
+            <Dependent Role="CURSOS">
+              <PropertyRef Name="cur_profesorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FALTAS_LABORATORIO">
+          <End Role="LABORATORIO" Type="Self.LABORATORIO" Multiplicity="0..1" />
+          <End Role="FALTAS" Type="Self.FALTAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LABORATORIO">
+              <PropertyRef Name="lab_id" />
+            </Principal>
+            <Dependent Role="FALTAS">
+              <PropertyRef Name="fal_laboratorioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FALTAS_MATERIA">
+          <End Role="MATERIA" Type="Self.MATERIA" Multiplicity="0..1" />
+          <End Role="FALTAS" Type="Self.FALTAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MATERIA">
+              <PropertyRef Name="mat_id" />
+            </Principal>
+            <Dependent Role="FALTAS">
+              <PropertyRef Name="fal_materiaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HORARIO_LABORATORIO">
+          <End Role="LABORATORIO" Type="Self.LABORATORIO" Multiplicity="0..1" />
+          <End Role="HORARIO" Type="Self.HORARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LABORATORIO">
+              <PropertyRef Name="lab_id" />
+            </Principal>
+            <Dependent Role="HORARIO">
+              <PropertyRef Name="hora_laboratorioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HORARIO_MATERIA">
+          <End Role="MATERIA" Type="Self.MATERIA" Multiplicity="0..1" />
+          <End Role="HORARIO" Type="Self.HORARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MATERIA">
+              <PropertyRef Name="mat_id" />
+            </Principal>
+            <Dependent Role="HORARIO">
+              <PropertyRef Name="hora_materiaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HORARIO_PROFESOR">
+          <End Role="PROFESOR" Type="Self.PROFESOR" Multiplicity="0..1" />
+          <End Role="HORARIO" Type="Self.HORARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROFESOR">
+              <PropertyRef Name="prf_id" />
+            </Principal>
+            <Dependent Role="HORARIO">
+              <PropertyRef Name="hora_profesorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIO_PERFIL">
+          <End Role="PERFIL" Type="Self.PERFIL" Multiplicity="0..1" />
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERFIL">
+              <PropertyRef Name="pfl_id" />
+            </Principal>
+            <Dependent Role="USUARIO">
+              <PropertyRef Name="usu_pefilId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBLABEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ACCESO" EntityType="Self.ACCESO" />
+          <EntitySet Name="ASISTENCIA" EntityType="Self.ASISTENCIA" />
+          <EntitySet Name="CAMBIOS" EntityType="Self.CAMBIOS" />
+          <EntitySet Name="CARRERA" EntityType="Self.CARRERA" />
+          <EntitySet Name="COMPARTIDOS" EntityType="Self.COMPARTIDOS" />
+          <EntitySet Name="CURSOS" EntityType="Self.CURSOS" />
+          <EntitySet Name="DEPARTAMENTO" EntityType="Self.DEPARTAMENTO" />
+          <EntitySet Name="FALTAS" EntityType="Self.FALTAS" />
+          <EntitySet Name="HORARIO" EntityType="Self.HORARIO" />
+          <EntitySet Name="LABORATORIO" EntityType="Self.LABORATORIO" />
+          <EntitySet Name="MATERIA" EntityType="Self.MATERIA" />
+          <EntitySet Name="MATGRP" EntityType="Self.MATGRP" />
+          <EntitySet Name="PERFIL" EntityType="Self.PERFIL" />
+          <EntitySet Name="PERIODO" EntityType="Self.PERIODO" />
+          <EntitySet Name="PROFESOR" EntityType="Self.PROFESOR" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
+          <AssociationSet Name="FK_ACCESO_LABORATORIO" Association="Self.FK_ACCESO_LABORATORIO">
+            <End Role="LABORATORIO" EntitySet="LABORATORIO" />
+            <End Role="ACCESO" EntitySet="ACCESO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ASISTENCIA_LABORATORIO" Association="Self.FK_ASISTENCIA_LABORATORIO">
+            <End Role="LABORATORIO" EntitySet="LABORATORIO" />
+            <End Role="ASISTENCIA" EntitySet="ASISTENCIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ASISTENCIA_MATERIA" Association="Self.FK_ASISTENCIA_MATERIA">
+            <End Role="MATERIA" EntitySet="MATERIA" />
+            <End Role="ASISTENCIA" EntitySet="ASISTENCIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ASISTENCIA_PROFESOR" Association="Self.FK_ASISTENCIA_PROFESOR">
+            <End Role="PROFESOR" EntitySet="PROFESOR" />
+            <End Role="ASISTENCIA" EntitySet="ASISTENCIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MATERIA_CARRERA" Association="Self.FK_MATERIA_CARRERA">
+            <End Role="CARRERA" EntitySet="CARRERA" />
+            <End Role="MATERIA" EntitySet="MATERIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CURSOS_LABORATORIO" Association="Self.FK_CURSOS_LABORATORIO">
+            <End Role="LABORATORIO" EntitySet="LABORATORIO" />
+            <End Role="CURSOS" EntitySet="CURSOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CURSOS_PROFESOR" Association="Self.FK_CURSOS_PROFESOR">
+            <End Role="PROFESOR" EntitySet="PROFESOR" />
+            <End Role="CURSOS" EntitySet="CURSOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FALTAS_LABORATORIO" Association="Self.FK_FALTAS_LABORATORIO">
+            <End Role="LABORATORIO" EntitySet="LABORATORIO" />
+            <End Role="FALTAS" EntitySet="FALTAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FALTAS_MATERIA" Association="Self.FK_FALTAS_MATERIA">
+            <End Role="MATERIA" EntitySet="MATERIA" />
+            <End Role="FALTAS" EntitySet="FALTAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HORARIO_LABORATORIO" Association="Self.FK_HORARIO_LABORATORIO">
+            <End Role="LABORATORIO" EntitySet="LABORATORIO" />
+            <End Role="HORARIO" EntitySet="HORARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HORARIO_MATERIA" Association="Self.FK_HORARIO_MATERIA">
+            <End Role="MATERIA" EntitySet="MATERIA" />
+            <End Role="HORARIO" EntitySet="HORARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HORARIO_PROFESOR" Association="Self.FK_HORARIO_PROFESOR">
+            <End Role="PROFESOR" EntitySet="PROFESOR" />
+            <End Role="HORARIO" EntitySet="HORARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIO_PERFIL" Association="Self.FK_USUARIO_PERFIL">
+            <End Role="PERFIL" EntitySet="PERFIL" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_getAcceso" ReturnType="Collection(Int64)" />
+          <FunctionImport Name="sp_getAsistencia" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="sp_getCambio" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="sp_getCurso" ReturnType="Collection(Int64)" />
+          <FunctionImport Name="sp_getFalta" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="sp_getGrupo" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="sp_getHorario" ReturnType="Collection(Int64)" />
+          <FunctionImport Name="sp_getPeriodo" ReturnType="Collection(Int64)" />
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(DBLABModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(DBLABModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="BITACORA" EntityType="DBLABModel.BITACORA" />
+          <FunctionImport Name="sp_getBitacora" ReturnType="Collection(Int64)" />
+          <FunctionImport Name="sp_getUsuario" ReturnType="Collection(Int64)" />
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="BITACORA">
+          <Key>
+            <PropertyRef Name="bit_id" />
+          </Key>
+          <Property Name="bit_id" Type="Int32" Nullable="false" />
+          <Property Name="bit_usuario" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="bit_descripcion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="bit_fecha" Type="DateTime" Precision="0" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBLABModelStoreContainer" CdmEntityContainer="DBLABEntities">
+          <EntitySetMapping Name="ACCESO">
+            <EntityTypeMapping TypeName="DBLABModel.ACCESO">
+              <MappingFragment StoreEntitySet="ACCESO">
+                <ScalarProperty Name="acc_materia" ColumnName="acc_materia" />
+                <ScalarProperty Name="acc_periodo" ColumnName="acc_periodo" />
+                <ScalarProperty Name="acc_id" ColumnName="acc_id" />
+                <ScalarProperty Name="acc_usuario" ColumnName="acc_usuario" />
+                <ScalarProperty Name="acc_numeroId" ColumnName="acc_numeroId" />
+                <ScalarProperty Name="acc_laboratorioId" ColumnName="acc_laboratorioId" />
+                <ScalarProperty Name="acc_maquina" ColumnName="acc_maquina" />
+                <ScalarProperty Name="acc_horaEntrada" ColumnName="acc_horaEntrada" />
+                <ScalarProperty Name="acc_fecha" ColumnName="acc_fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ASISTENCIA">
+            <EntityTypeMapping TypeName="DBLABModel.ASISTENCIA">
+              <MappingFragment StoreEntitySet="ASISTENCIA">
+                <ScalarProperty Name="asis_id" ColumnName="asis_id" />
+                <ScalarProperty Name="asis_profesorId" ColumnName="asis_profesorId" />
+                <ScalarProperty Name="asis_materiaId" ColumnName="asis_materiaId" />
+                <ScalarProperty Name="asis_grupoId" ColumnName="asis_grupoId" />
+                <ScalarProperty Name="asis_laboratorioId" ColumnName="asis_laboratorioId" />
+                <ScalarProperty Name="asis_alumnos" ColumnName="asis_alumnos" />
+                <ScalarProperty Name="asis_horaEntrada" ColumnName="asis_horaEntrada" />
+                <ScalarProperty Name="asis_horaSalida" ColumnName="asis_horaSalida" />
+                <ScalarProperty Name="asis_fecha" ColumnName="asis_fecha" />
+                <ScalarProperty Name="asis_periodo" ColumnName="asis_periodo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CAMBIOS">
+            <EntityTypeMapping TypeName="DBLABModel.CAMBIOS">
+              <MappingFragment StoreEntitySet="CAMBIOS">
+                <ScalarProperty Name="cam_periodo" ColumnName="cam_periodo" />
+                <ScalarProperty Name="cambio_id" ColumnName="cambio_id" />
+                <ScalarProperty Name="cambio_serieGrp" ColumnName="cambio_serieGrp" />
+                <ScalarProperty Name="cambio_lab" ColumnName="cambio_lab" />
+                <ScalarProperty Name="cambio_labNuevo" ColumnName="cambio_labNuevo" />
+                <ScalarProperty Name="cambio_horaEntrada" ColumnName="cambio_horaEntrada" />
+                <ScalarProperty Name="cambio_horaSalida" ColumnName="cambio_horaSalida" />
+                <ScalarProperty Name="cambio_horaEntradaNueva" ColumnName="cambio_horaEntradaNueva" />
+                <ScalarProperty Name="cambio_horaSalidaNueva" ColumnName="cambio_horaSalidaNueva" />
+                <ScalarProperty Name="cambio_dia" ColumnName="cambio_dia" />
+                <ScalarProperty Name="cambio_diaNuevo" ColumnName="cambio_diaNuevo" />
+                <ScalarProperty Name="cambio_razonCambio" ColumnName="cambio_razonCambio" />
+                <ScalarProperty Name="cambio_fecha" ColumnName="cambio_fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CARRERA">
+            <EntityTypeMapping TypeName="DBLABModel.CARRERA">
+              <MappingFragment StoreEntitySet="CARRERA">
+                <ScalarProperty Name="car_id" ColumnName="car_id" />
+                <ScalarProperty Name="car_nombre" ColumnName="car_nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMPARTIDOS">
+            <EntityTypeMapping TypeName="DBLABModel.COMPARTIDOS">
+              <MappingFragment StoreEntitySet="COMPARTIDOS">
+                <ScalarProperty Name="grpCom_serie" ColumnName="grpCom_serie" />
+                <ScalarProperty Name="grpCom_grpId" ColumnName="grpCom_grpId" />
+                <ScalarProperty Name="grpCom_materia" ColumnName="grpCom_materia" />
+                <ScalarProperty Name="grpCom_profesor" ColumnName="grpCom_profesor" />
+                <ScalarProperty Name="grpCom_carGrpUno" ColumnName="grpCom_carGrpUno" />
+                <ScalarProperty Name="grpCom_carGrpDos" ColumnName="grpCom_carGrpDos" />
+                <ScalarProperty Name="grpCom_grpUno" ColumnName="grpCom_grpUno" />
+                <ScalarProperty Name="grpCom_grpDos" ColumnName="grpCom_grpDos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CURSOS">
+            <EntityTypeMapping TypeName="DBLABModel.CURSOS">
+              <MappingFragment StoreEntitySet="CURSOS">
+                <ScalarProperty Name="cur_id" ColumnName="cur_id" />
+                <ScalarProperty Name="cur_nombre" ColumnName="cur_nombre" />
+                <ScalarProperty Name="cur_profesorId" ColumnName="cur_profesorId" />
+                <ScalarProperty Name="cur_laboratorioId" ColumnName="cur_laboratorioId" />
+                <ScalarProperty Name="cur_horaEntrada" ColumnName="cur_horaEntrada" />
+                <ScalarProperty Name="cur_horaSalida" ColumnName="cur_horaSalida" />
+                <ScalarProperty Name="cur_fecha" ColumnName="cur_fecha" />
+                <ScalarProperty Name="cur_presentador" ColumnName="cur_presentador" />
+                <ScalarProperty Name="cur_periodo" ColumnName="cur_periodo" />
+                <ScalarProperty Name="cur_dia" ColumnName="cur_dia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DEPARTAMENTO">
+            <EntityTypeMapping TypeName="DBLABModel.DEPARTAMENTO">
+              <MappingFragment StoreEntitySet="DEPARTAMENTO">
+                <ScalarProperty Name="dep_id" ColumnName="dep_id" />
+                <ScalarProperty Name="dep_nombre" ColumnName="dep_nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FALTAS">
+            <EntityTypeMapping TypeName="DBLABModel.FALTAS">
+              <MappingFragment StoreEntitySet="FALTAS">
+                <ScalarProperty Name="fal_id" ColumnName="fal_id" />
+                <ScalarProperty Name="fal_profesorId" ColumnName="fal_profesorId" />
+                <ScalarProperty Name="fal_materiaId" ColumnName="fal_materiaId" />
+                <ScalarProperty Name="fal_grupoId" ColumnName="fal_grupoId" />
+                <ScalarProperty Name="fal_laboratorioId" ColumnName="fal_laboratorioId" />
+                <ScalarProperty Name="fal_hora" ColumnName="fal_hora" />
+                <ScalarProperty Name="fal_motivo" ColumnName="fal_motivo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HORARIO">
+            <EntityTypeMapping TypeName="DBLABModel.HORARIO">
+              <MappingFragment StoreEntitySet="HORARIO">
+                <ScalarProperty Name="hora_id" ColumnName="hora_id" />
+                <ScalarProperty Name="hora_grupoId" ColumnName="hora_grupoId" />
+                <ScalarProperty Name="hora_materiaId" ColumnName="hora_materiaId" />
+                <ScalarProperty Name="hora_profesorId" ColumnName="hora_profesorId" />
+                <ScalarProperty Name="hora_laboratorioId" ColumnName="hora_laboratorioId" />
+                <ScalarProperty Name="hora_horaEntrada" ColumnName="hora_horaEntrada" />
+                <ScalarProperty Name="hora_horaSalida" ColumnName="hora_horaSalida" />
+                <ScalarProperty Name="hora_dia" ColumnName="hora_dia" />
+                <ScalarProperty Name="hora_serie" ColumnName="hora_serie" />
+                <ScalarProperty Name="hora_periodo" ColumnName="hora_periodo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LABORATORIO">
+            <EntityTypeMapping TypeName="DBLABModel.LABORATORIO">
+              <MappingFragment StoreEntitySet="LABORATORIO">
+                <ScalarProperty Name="lab_id" ColumnName="lab_id" />
+                <ScalarProperty Name="lab_nombre" ColumnName="lab_nombre" />
+                <ScalarProperty Name="lab_capacidad" ColumnName="lab_capacidad" />
+                <ScalarProperty Name="lab_descripcion" ColumnName="lab_descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MATERIA">
+            <EntityTypeMapping TypeName="DBLABModel.MATERIA">
+              <MappingFragment StoreEntitySet="MATERIA">
+                <ScalarProperty Name="mat_id" ColumnName="mat_id" />
+                <ScalarProperty Name="mat_nombre" ColumnName="mat_nombre" />
+                <ScalarProperty Name="mat_semestre" ColumnName="mat_semestre" />
+                <ScalarProperty Name="mat_carrera" ColumnName="mat_carrera" />
+                <ScalarProperty Name="mat_horasp" ColumnName="mat_horasp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MATGRP">
+            <EntityTypeMapping TypeName="DBLABModel.MATGRP">
+              <MappingFragment StoreEntitySet="MATGRP">
+                <ScalarProperty Name="matgrp_nombre" ColumnName="matgrp_nombre" />
+                <ScalarProperty Name="materia" ColumnName="materia" />
+                <ScalarProperty Name="grupo" ColumnName="grupo" />
+                <ScalarProperty Name="hora" ColumnName="hora" />
+                <ScalarProperty Name="periodo" ColumnName="periodo" />
+                <ScalarProperty Name="matgrp_serie" ColumnName="matgrp_serie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PERFIL">
+            <EntityTypeMapping TypeName="DBLABModel.PERFIL">
+              <MappingFragment StoreEntitySet="PERFIL">
+                <ScalarProperty Name="pfl_id" ColumnName="pfl_id" />
+                <ScalarProperty Name="pfl_nombre" ColumnName="pfl_nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PERIODO">
+            <EntityTypeMapping TypeName="DBLABModel.PERIODO">
+              <MappingFragment StoreEntitySet="PERIODO">
+                <ScalarProperty Name="per_id" ColumnName="per_id" />
+                <ScalarProperty Name="per_año" ColumnName="per_año" />
+                <ScalarProperty Name="per_semestre" ColumnName="per_semestre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROFESOR">
+            <EntityTypeMapping TypeName="DBLABModel.PROFESOR">
+              <MappingFragment StoreEntitySet="PROFESOR">
+                <ScalarProperty Name="prf_id" ColumnName="prf_id" />
+                <ScalarProperty Name="prf_nombreCompleto" ColumnName="prf_nombreCompleto" />
+                <ScalarProperty Name="prf_contrato" ColumnName="prf_contrato" />
+                <ScalarProperty Name="prf_telefono" ColumnName="prf_telefono" />
+                <ScalarProperty Name="prf_correo" ColumnName="prf_correo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DBLABModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIO">
+            <EntityTypeMapping TypeName="DBLABModel.USUARIO">
+              <MappingFragment StoreEntitySet="USUARIO">
+                <ScalarProperty Name="usu_noControl" ColumnName="usu_noControl" />
+                <ScalarProperty Name="usu_id" ColumnName="usu_id" />
+                <ScalarProperty Name="usu_nombre" ColumnName="usu_nombre" />
+                <ScalarProperty Name="usu_apPaterno" ColumnName="usu_apPaterno" />
+                <ScalarProperty Name="usu_apMaterno" ColumnName="usu_apMaterno" />
+                <ScalarProperty Name="usu_contrasena" ColumnName="usu_contrasena" />
+                <ScalarProperty Name="usu_correo" ColumnName="usu_correo" />
+                <ScalarProperty Name="usu_pefilId" ColumnName="usu_pefilId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="DBLABModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="DBLABModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="DBLABModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_getAcceso" FunctionName="DBLABModel.Store.sp_getAcceso" />
+          <FunctionImportMapping FunctionImportName="sp_getAsistencia" FunctionName="DBLABModel.Store.sp_getAsistencia" />
+          <FunctionImportMapping FunctionImportName="sp_getCambio" FunctionName="DBLABModel.Store.sp_getCambio" />
+          <FunctionImportMapping FunctionImportName="sp_getCurso" FunctionName="DBLABModel.Store.sp_getCurso" />
+          <FunctionImportMapping FunctionImportName="sp_getFalta" FunctionName="DBLABModel.Store.sp_getFalta" />
+          <FunctionImportMapping FunctionImportName="sp_getGrupo" FunctionName="DBLABModel.Store.sp_getGrupo" />
+          <FunctionImportMapping FunctionImportName="sp_getHorario" FunctionName="DBLABModel.Store.sp_getHorario" />
+          <FunctionImportMapping FunctionImportName="sp_getPeriodo" FunctionName="DBLABModel.Store.sp_getPeriodo" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="DBLABModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBLABModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="DBLABModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBLABModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="DBLABModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="DBLABModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="BITACORA">
+            <EntityTypeMapping TypeName="DBLABModel.BITACORA">
+              <MappingFragment StoreEntitySet="BITACORA">
+                <ScalarProperty Name="bit_fecha" ColumnName="bit_fecha" />
+                <ScalarProperty Name="bit_descripcion" ColumnName="bit_descripcion" />
+                <ScalarProperty Name="bit_usuario" ColumnName="bit_usuario" />
+                <ScalarProperty Name="bit_id" ColumnName="bit_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_getBitacora" FunctionName="DBLABModel.Store.sp_getBitacora" />
+          <FunctionImportMapping FunctionImportName="sp_getUsuario" FunctionName="DBLABModel.Store.sp_getUsuario" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

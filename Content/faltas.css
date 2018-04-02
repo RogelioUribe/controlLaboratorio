@@ -1,0 +1,26 @@
+﻿@media only screen and (min-width: 230px) {
+    #info{ width:245px;}    
+    .txtSearch, .txtDefault{ width:200px; }    
+    #SearchPrf, #SearchMtr, #SearchGrp, #SearchLab{width:130px;}
+    #txtHora, #txtObservaciones{width:232px;}    
+}
+
+@media only screen and (min-width: 320px) {
+    #info{ width:280px;}    
+    .txtDefault, .txtSearch{ width:234px; }        
+    #txtHora, #txtObservaciones{width:266px;}    
+}
+
+@media only screen and (min-width: 480px) {
+    #info{ width:385px;}                
+    #txtDocente{ margin-left:35px; }
+    #txtMateria{ margin-left:42px; }    
+    #txtGrupo{ margin-left:49px; }
+    #txtLaboratorio{ margin-left:12px; }
+    #txtHora{ margin-left:60px; }
+    #txtObservaciones{ margin-left:100px; width:268px;}
+}
+
+@media only screen and (min-width: 768px) {
+    #titulo{margin-top:60px;}
+}

@@ -1,0 +1,28 @@
+﻿@media only screen and (min-width: 230px) {
+    #info{ width:250px;}            
+    #titulo{ margin-top:60px; }
+    .txtSearch, .txtDefault{ width:200px; }
+    #SearchMtr, #SearchCar{width:130px; text-transform:uppercase;}
+    #txtNombre{text-transform:uppercase;}
+    #txtSerie, #txtCarrera{text-transform:uppercase;}       
+}
+
+
+@media only screen and (min-width: 320px) {
+    #info{ width:280px;}    
+    .txtDefault, .txtSearch{ width:234px; }
+    #SearchMtr, #SearchCar{width:200px;}      
+}
+
+@media only screen and (min-width: 480px) {
+    #info{ width:430px;}   
+    .txtSearch{ width:248px; }
+    .txtDefault{ width:300px; }
+    #txtSerie{margin-left:50px;}
+    #txtNombre{ margin-left:58px; }
+    #txtSemestre{ margin-left:53px; }    
+    #txtCarrera{ margin-left:63px; }   
+    #txtHPracticas{ margin-left:10px; } 
+}
+
+

@@ -1,0 +1,67 @@
+﻿@model List<ControlLab.Models.InfoUsuarios>
+
+
+<!--CSS-->
+<link rel="stylesheet" type="text/css" href="~/Content/consultas.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/global.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/font-awesome.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/styles.css" />
+
+<!--Titulo pestaña-->
+<title>Reportes de bitacora</title>
+
+<!--Titulo-->
+<h2 id="titulo">Reportes</h2>
+
+<!--Panel principal-->
+<div id="info">    
+    <div id="info" class="table-responsive">
+        <table id="tbSerie" class="table table-hover">
+            <thead id="thHead">
+                <tr>
+                    <td style="display:none">Id</td>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Perfil</th>                    
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count > 0)
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td style="display:none">@Html.DisplayFor(modelItem => item.UsuId)</td>
+                            <td><label id="lblNombre" onclick="MostrarReporte(this)">@Html.DisplayFor(modelItem => item.NombreCompleto)</label></td>
+                            <td>@Html.DisplayFor(modelItem => item.UsuCorreo)</td>
+                            <td>@Html.DisplayFor(modelItem => item.UsuPerfil)</td>                            
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!--Panel de reportes-->
+<div id="Reporte" style="display:none">
+    <div id="info" class="table-responsive">
+        <table id="tbReporte" class="table table-hover">
+            <thead id="thHead">
+                <tr>                    
+                    <th>Reporte</th>
+                    <th>Fecha</th>                    
+                </tr>
+            </thead>
+            <tbody>
+               <tr></tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<!--Script-->
+<script src="~/Scripts/global.js"></script>
+<script src="~/Scripts/reportes.js"></script>
+<script src="~/Scripts/jquery-1.9.1.js"></script>

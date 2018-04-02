@@ -1,0 +1,26 @@
+﻿<!--CSS-->
+<link rel="stylesheet" type="text/css" href="~/Content/login.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/global.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/font-awesome.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/styles.css" />
+
+<!--Titulo pestaña-->
+<title>Login</title>
+
+<!--Titulo-->
+<h2 id="titulo">Login</h2>
+
+<!--Panel principal-->
+<div id="info">
+    Usuario: <input type="text" class="cajas txtDefault" id="txtUsu" />
+    Contraseña: <input type="password" class="cajas txtDefault" id="txtPass"  onkeyup = "if (event.keyCode == 13) validar()" />
+</div>
+
+<!--Botones-->
+<input type="submit" value="Aceptar" id="btnAceptar" onclick="validar()" />
+<input type="submit" value="Cancelar" id="btnCancelar" onclick="limpiar()" />
+
+<!--Script-->
+<script src="~/Scripts/global.js"></script>
+<script src="~/Scripts/login.js"></script>
+

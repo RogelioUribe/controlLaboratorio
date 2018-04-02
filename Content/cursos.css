@@ -1,0 +1,32 @@
+﻿@media only screen and (min-width: 230px) {
+    #info{ width:245px;}    
+    #titulo{ width: 60px; }    
+    .txtSearch, .txtDefault{ width:200px; }        
+    #txtHoraEntrada, #txtHoraSalida, #txtDia{width:232px;}
+    #SearchCur, #SearchPrf, #SearchLab {width:150px; text-transform:uppercase;}
+    #txtNombre, #txtRep, #txtPre, #txtLaboratorio {text-transform:uppercase;}    
+}
+
+
+@media only screen and (min-width: 320px) {
+    #info{ width:280px;}    
+    .txtDefault, .txtSearch{ width:234px; }        
+    #SearchCur, #SearchPrf, #SearchLab {width:200px;}
+    #txtHoraEntrada, #txtHoraSalida, #txtDia{width:266px;}
+}
+
+@media only screen and (min-width: 480px) {
+    #info{ width:390px;}        
+    #txtNombre{ margin-left:49px; }
+    #txtRep{ margin-left:2px; }    
+    #txtPre{ margin-left:19px; }
+    #txtLaboratorio{ margin-left:22px; }
+    #txtPer{ margin-left:49px; }
+    #txtHoraEntrada{ margin-left:13px; }
+    #txtHoraSalida{ margin-left:24px; }
+    #txtDia{ margin-left:80px; }
+}
+
+@media only screen and (min-width: 768px) {
+    #titulo{margin-top:30px;}
+}

@@ -1,0 +1,127 @@
+﻿<!--CSS-->
+<link rel="stylesheet" type="text/css" href="~/Content/accesos.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/global.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/font-awesome.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/styles.css" />
+
+<!--Titulo pestaña-->
+<title>Accesos</title>
+
+<!--Titulo-->
+<h2 id="titulo">Accesos</h2>
+
+<!--Panel principal-->
+<div id="info">
+    Usuario: <select id="Usuario" class="cajas txtDefault" onchange="mostrarUsuario()" >
+                <option> </option>
+                <option value="Docente">Docente</option>
+                <option value="Estudiante">Estudiante</option>                
+            </select>
+    <label style="display:none" id="lblNoControl">No. Control:</label><label id="lblNoEmp">No. Emp:</label><input type="text" class="cajas txtDefault" id="txtNoControl" onkeypress="return justNumbers(this)" />
+    Laboratorio: <input type="text" class="cajas txtSearch" id="txtLaboratorio" />
+    <button type="button" data-toggle="modal" data-target=".modalLab" onclick="limpiarModalLab()">
+        <i class="fa fa-search" aria-hidden="true"></i>
+    </button>
+    <label style="display:none" id="lblMaquina">Maquina:</label> <input type="text" class="cajas txtDefault" id="txtMaquina" onkeypress="return justNumbers(this)" style="display:none" />
+    <label style="display:none" id="lblMateria">Materia:</label> <input type="text" class="cajas txtSearch" id="txtMateria" style="display:none" />
+    <button type="button" data-toggle="modal" data-target=".modalMaterias" onclick="limpiarModalMtr()" style="display:none" id="btnMateria">
+        <i class="fa fa-search" aria-hidden="true"></i>
+    </button>
+</div>
+
+<!--Botonces-->
+<input type="submit" value="Aceptar" id="btnAceptar" onclick="validar()" />
+<input type="submit" value="Cancelar" id="btnCancelar" onclick="limpiar()" />
+
+<!--Modal de Laboratorios-->
+<div class="modal fade modal modalLab">
+    <div class="modal-content modalPrincipal">
+        <div class="modalSecundario">
+            <h2 id="titulo">Laboratorios</h2>
+            <label>Buscar:</label>
+            <input type="text" class="cajas" id="SearchLab" onkeyup="filtrarLab(this)" />
+            <h3>Informacion</h3>
+            <div class="table-responsive">
+                <table class="table table-hover" id="tbLab">
+                    <thead id="thHead">
+                        <tr>
+                            <th>Laboratorio</th>
+                            <th>Capacidad</th>
+                            <th>---</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr></tr>
+                        @*<tr id="trLab1">
+                            <td id="tdNombre1">A</td>
+                            <td id="tdCapacidad1">35</td>
+                            <td id="tdStatus"><i class="fa fa-check-square" aria-hidden="true" onclick="mostrarLab(this)"></i></td>
+                        </tr>
+                        <tr id="trLab2">
+                            <td id="tdNombre2">I</td>
+                            <td id="tdCapacidad2">40</td>
+                            <td id="tdStatus"><i class="fa fa-check-square" aria-hidden="true" onclick="mostrarLab(this)"></i></td>
+                        </tr>
+                        <tr id="trLab3">
+                            <td id="tdNombre3">C</td>
+                            <td id="tdCapacidad3">30</td>
+                            <td id="tdStatus"><i class="fa fa-check-square" aria-hidden="true" onclick="mostrarLab(this)"></i></td>
+                        </tr>*@
+                    </tbody>
+                </table>
+            </div>
+            <button id="btnAceptar" data-dismiss="modal">Aceptar</button>
+        </div>
+    </div>
+</div>
+
+<!--Modal de Materias-->
+<div class="modal fade modal modalMaterias">
+    <div class="modal-content modalPrincipal">
+        <div class="modalSecundario">
+            <h2 id="titulo">Materias</h2>
+            <label>Buscar:</label>
+            <input type="text" class="cajas" id="SearchMtr" onkeyup="filtrarMrt(this)" />
+            <h3>Informacion</h3>
+            <div class="table-responsive">
+                <table class="table table-hover" id="tbMrt">
+                    <thead id="thHead">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Semestre</th>
+                            <th>Carrera</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr></tr>
+                        @*<tr id="trMrt1">
+                                <td id="tdNombre1">Programacion orientada a objetos</td>
+                                <td id="tdSemestre1">4</td>
+                                <td id="tdCarrera1">Ingenieria en Sistemas Computacionales</td>
+                                <td id="tdStatus"><i class="fa fa-check-square" aria-hidden="true" onclick="mostrarMtr(this)"></i></td>
+                            </tr>
+                            <tr id="trMrt2">
+                                <td id="tdNombre2">Telecomunicaciones</td>
+                                <td id="tdSemestre2">5</td>
+                                <td id="tdCarrera2">Telecomunicaciones</td>
+                                <td id="tdStatus"><i class="fa fa-check-square" aria-hidden="true" onclick="mostrarMtr(this)"></i></td>
+                            </tr>
+                            <tr id="trMrt3">
+                                <td id="tdNombre3">Contabilidad</td>
+                                <td id="tdSemestre3">3</td>
+                                <td id="tdCarrera3">Informatica</td>
+                                <td id="tdStatus"><i class="fa fa-check-square" aria-hidden="true" onclick="mostrarMtr(this)"></i></td>
+                            </tr>*@
+                    </tbody>
+                </table>
+            </div>
+            <button id="btnAceptar" data-dismiss="modal">Aceptar</button>
+        </div>
+    </div>
+</div>
+
+<!--Scripts-->
+<script src="~/Scripts/jquery-1.9.1.js"></script>
+<script src="~/Scripts/jquery.autocomplete.js"></script>
+<script src="~/Scripts/global.js"></script>
+<script src="~/Scripts/accesos.js"></script>

@@ -1,0 +1,68 @@
+﻿<!--CSS-->
+<link rel="stylesheet" type="text/css" href="~/Content/usuarios.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/global.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/font-awesome.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/styles.css" />
+
+<!--Titulo pestaña-->
+<title>Usuarios</title>
+
+<!--Titulo-->
+<h2 id="titulo">Usuarios</h2>
+
+<!--Panel principal-->
+<div id="info">    
+    Nombre: <input type="text" class="cajas txtSearch" id="txtNombre" required onKeyPress="return soloLetras(event);" />
+    <button type="button" data-toggle="modal" data-target=".modalUsuario" onclick="limpiarModalUsuario()">
+        <i class="fa fa-search" aria-hidden="true"></i>
+    </button>
+    Apellido paterno: <input type="text" class="cajas txtDefault" id="txtApPaterno" required onKeyPress="return soloLetras(event);" />    
+    Apellido materno: <input type="text" class="cajas txtDefault" id="txtApMaterno" required onKeyPress="return soloLetras(event);" />    
+    Contraseña: <input type="text" class="cajas txtDefault" id="txtPassword" />    
+    Correo: <input type="text" class="cajas txtDefault" id="txtCorreo" />    
+    Perfil: <select class="cajas txtDefault" onchange="mostrarSS()" id="txtPerfil">
+        <option> </option>
+        <option>Administrador</option>
+        <option>Auxiliar de laboratorio</option>
+        <option >Servicio Social</option>        
+    </select>      
+    <label style="display:none" id="lblNoControl">NoControl:</label> <input type="text" class="cajas txtDefault" id="txtNoControl" onkeypress="return justNumbers(this)" style="display:none" />          
+</div>
+
+<!--Botones-->
+<input type="submit" value="Aceptar" id="btnAceptar" onclick="validar()" />
+<input type="submit" value="Cancelar" id="btnCancelar" onclick="limpiar()" />
+
+<!--Modal de Usuarios-->
+<div class="modal fade modal modalUsuario">
+    <div class="modal-content modalPrincipal">
+        <div class="modalSecundario">
+            <h2 id="titulo">Usuarios</h2>
+            <label>Buscar:</label>
+            <input type="text" class="cajas" id="SearchUsu" onkeyup="filtrarUsu(this)" />
+            <h3>Informacion</h3>
+            <div class="table-responsive">
+                <table class="table table-hover" id="tbUsu">
+                    <thead id="thHead">
+                        <tr>
+                            <th style="display:none"></th>
+                            <th>Nombre Completo</th>
+                            <th>Corrreo</th>
+                            <th>Perfil</th>
+                            <th>NoControl</th>
+                            <th>Password</th>                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr></tr>
+                    </tbody>
+                </table>
+            </div>
+            <button id="btnAceptar" data-dismiss="modal">Aceptar</button>
+        </div>
+    </div>
+</div>
+
+<!--Script-->
+<script src="~/Scripts/global.js"></script>
+<script src="~/Scripts/usuarios.js"></script>

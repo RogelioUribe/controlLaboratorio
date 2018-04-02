@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8ffcefd9a23d4c34a0bdc793e4b1bfa8" Name="Diagram1" ZoomLevel="84">
+        <EntityTypeShape EntityType="DBLABModel.ACCESO" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBLABModel.ASISTENCIA" Width="1.5" PointX="6" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBLABModel.CAMBIOS" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBLABModel.CARRERA" Width="1.5" PointX="1.5" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBLABModel.COMPARTIDOS" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBLABModel.CURSOS" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBLABModel.DEPARTAMENTO" Width="1.5" PointX="8.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBLABModel.FALTAS" Width="1.5" PointX="3" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBLABModel.HORARIO" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBLABModel.LABORATORIO" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBLABModel.MATERIA" Width="1.5" PointX="3.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBLABModel.MATGRP" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBLABModel.PERFIL" Width="1.5" PointX="8.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBLABModel.PERIODO" Width="1.5" PointX="10.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBLABModel.PROFESOR" Width="1.5" PointX="3.75" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBLABModel.sysdiagrams" Width="1.5" PointX="10.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBLABModel.USUARIO" Width="1.5" PointX="11" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="DBLABModel.FK_ACCESO_LABORATORIO" ManuallyRouted="false" />
+        <AssociationConnector Association="DBLABModel.FK_ASISTENCIA_LABORATORIO" ManuallyRouted="false" />
+        <AssociationConnector Association="DBLABModel.FK_ASISTENCIA_MATERIA" ManuallyRouted="false" />
+        <AssociationConnector Association="DBLABModel.FK_ASISTENCIA_PROFESOR" ManuallyRouted="false" />
+        <AssociationConnector Association="DBLABModel.FK_MATERIA_CARRERA" ManuallyRouted="false" />
+        <AssociationConnector Association="DBLABModel.FK_CURSOS_LABORATORIO" ManuallyRouted="false" />
+        <AssociationConnector Association="DBLABModel.FK_CURSOS_PROFESOR" ManuallyRouted="false" />
+        <AssociationConnector Association="DBLABModel.FK_FALTAS_LABORATORIO" ManuallyRouted="false" />
+        <AssociationConnector Association="DBLABModel.FK_FALTAS_MATERIA" ManuallyRouted="false" />
+        <AssociationConnector Association="DBLABModel.FK_HORARIO_LABORATORIO" ManuallyRouted="false" />
+        <AssociationConnector Association="DBLABModel.FK_HORARIO_MATERIA" ManuallyRouted="false" />
+        <AssociationConnector Association="DBLABModel.FK_HORARIO_PROFESOR" ManuallyRouted="false" />
+        <AssociationConnector Association="DBLABModel.FK_USUARIO_PERFIL" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DBLABModel.BITACORA" Width="1.5" PointX="13.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

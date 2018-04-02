@@ -1,0 +1,94 @@
+﻿<!--CSS-->
+<link rel="stylesheet" type="text/css" href="~/Content/horario.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/global.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/font-awesome.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/styles.css" />
+
+<!--Titulo pestaña-->
+<title>Importar Horario</title>
+
+<!--Titulo-->
+<h2 id="titulo">Horario</h2>
+
+<!--Boton de importar-->
+<input type="file" id="my_file_input" />
+
+<!--Tabla de información-->
+<div id="info" class="table-responsive">    
+    <table id="my_file_output" class="table table-hover">
+        <thead id="thHead">
+            <tr>
+                <th>Profesor</th>
+                <th>Grupo</th>
+                <th>Alumnos</th>
+                <th>Materia</th>
+                <th>Laboratorio</th>
+                <th>Hora Entrada</th>
+                <th>Hora Salida</th>
+                <th>Dia</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
+
+<!--Botones-->
+<input type="submit" value="Aceptar" id="btnAceptar" onclick="validar()" />
+<input type="submit" value="Cancelar" id="btnCancelar" onclick="limpiar()" />
+
+<!--Scripts-->
+<script src="~/Scripts/global.js"></script>
+<script src="~/Scripts/jquery-1.9.1.js"></script>
+<script src="~/Scripts/importarHR.js"></script>
+<script src="~/Scripts/xls.js"></script>
+<script language="JavaScript">
+        var oFileIn;
+        //Código JQuery
+        $(function() {
+            oFileIn = document.getElementById('my_file_input');
+            if (oFileIn.addEventListener) {
+                oFileIn.addEventListener('change', filePicked, false);
+            }
+        });
+
+        //Método que hace el proceso de importar excel a html
+        function filePicked(oEvent) {
+            // Obtener el archivo del input
+            var oFile = oEvent.target.files[0];
+            var sFilename = oFile.name;
+            // Crear un Archivo de Lectura HTML5
+            var reader = new FileReader();
+
+            // Leyendo los eventos cuando el archivo ha sido seleccionado
+            $("#my_file_output > tbody ").empty();
+            reader.onload = function(e) {
+                var data = e.target.result;
+                var cfb = XLS.CFB.read(data, {
+                    type: 'binary'
+                });
+                var wb = XLS.parse_xlscfb(cfb);
+                // Iterando sobre cada sheet
+                wb.SheetNames.forEach(function(sheetName) {
+                    // Obtener la fila actual como CSV
+                    var sCSV = XLS.utils.make_csv(wb.Sheets[sheetName]);
+                    var data = XLS.utils.sheet_to_json(wb.Sheets[sheetName], {
+                        header: 1
+                    });
+                    $.each(data, function(indexR, valueR) {
+                        var sRow = "<tr>";
+                        $.each(data[indexR], function(indexC, valueC) {
+                            sRow = sRow + "<td>" + valueC + "</td>";
+                        });
+                        sRow = sRow + "</tr>";                                                
+                        $("#my_file_output").append(sRow);
+                    });
+                });
+            };
+
+        // Llamar al JS Para empezar a leer el archivo .. Se podría retrasar esto si se desea
+        reader.readAsBinaryString(oFile);
+        }
+
+</script>

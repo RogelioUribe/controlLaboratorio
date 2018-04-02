@@ -1,0 +1,36 @@
+﻿@media only screen and (min-width: 230px) {
+    #infoUno{ width:220px;}    
+    #infoDos{ width:220px;}
+    #infoTres{ width:220px;}
+    #txtHoraEntrada{ width:106px; margin-top:15px; }
+    #txtHoraSalida{ margin-top:15px; margin-left:11px; width:106px; }
+    #txtDia{ margin-top:15px; margin-left:67px; }
+    #txtCarreraUno, #txtGrupoUno, #txtCarreraDos, #txtGrupoDos, #txtGrupo, #txtMateria, #txtProfesor, #txtLaboratorio, #SearchCar, #SearchMtr, #SearchPrf, #SearchLab{ text-transform:uppercase; }
+}
+
+@media only screen and (min-width: 320px) {
+    #infoUno, #infoTres{ width:280px;}
+    #infoDos{ width:280px;}
+    #txtGrupoUno, #txtGrupoDos{ margin-left:6px; }
+
+    #txtGrupo{ margin-left:37px; width:140px;}
+    #txtMateria{ margin-left:30px; width:140px;}
+    #txtCapacidad{ margin-left:19px; width:140px; }
+    #txtProfesor{ margin-left:22px; width:140px; }
+    #txtLaboratorio{width:140px;}
+    #txtHoraEntrada{ width:163px; margin-top:5px; }
+    #txtHoraSalida{ width:163px; margin-top:5px; }
+    #txtDia{ width:163px; margin-top:5px; }
+}
+
+@media only screen and (min-width: 480px) {
+    #infoTres{ width:470px;}
+    #txtGrupo{ margin-left:23px; width:155px; }
+    #txtMateria{ margin-left:9px; width:120px;}
+    #txtCapacidad{ margin-left:5px; width:155px; }
+    #txtProfesor{ margin-left:1px; width:120px }
+    #txtLaboratorio{ margin-left:1px; width:110px }
+    #txtHoraEntrada{ width:110px; margin-top:5px; margin-left:10px }
+    #txtHoraSalida{ width:136px; margin-top:5px; margin-left:10px }
+    #txtDia{ width:110px; margin-top:5px; margin-left:78px }
+}

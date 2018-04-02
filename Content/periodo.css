@@ -1,0 +1,20 @@
+﻿@media only screen and (min-width: 230px) {
+    #info { width: 250px; }
+    #titulo { margin-top: 60px;}
+    .txtDefault{ width: 114px; }    
+    .txtSearch{ width: 114px; }
+    #txtAno{margin-left:45px;} 
+    #txtSem{margin-left:10px;}
+    #SearchLab{ width:140px; }
+}
+
+@media only screen and (min-width: 320px) {
+    #info{ width:280px;}             
+    #txtAno{margin-left:41px;}
+    #txtSem{margin-left:6px;}
+    #SearchLab{ width:200px; }
+
+}
+
+
+

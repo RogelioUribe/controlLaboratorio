@@ -1,0 +1,58 @@
+﻿<!--CSS-->
+<link rel="stylesheet" type="text/css" href="~/Content/periodo.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/global.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/font-awesome.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/styles.css" />
+
+<!--Titulo pestaña-->
+<title>Periodo</title>
+
+<!--Titulo-->
+<h2 id="titulo">Periodo</h2>
+
+<!--Panel principal-->
+<div id="info">
+    Año: <input type="text" class="cajas txtSearch" id="txtAno" onkeypress="return justNumbers(event)" maxlength="4" />
+    <button type="button" data-toggle="modal" data-target=".modalPer" onclick="limpiarModalPer()">
+        <i class="fa fa-search" aria-hidden="true"></i>
+    </button>
+    Semestre: <select class="cajas txtDefault" id="txtSem">
+        <option> </option>
+        <option>1</option>
+        <option>2</option>
+        <option>VERANO</option>        
+    </select>
+</div>
+
+<!--Botones-->
+<input type="submit" value="Aceptar" id="btnAceptar" onclick="validar()" />
+<input type="submit" value="Cancelar" id="btnCancelar" onclick="limpiar()" />
+
+<!--Modal de Periodo-->
+<div class="modal fade modal modalPer">
+    <div class="modal-content modalPrincipal">
+        <div class="modalSecundario">
+            <h2 id="titulo">Periodo</h2>
+            <label>Buscar:</label>
+            <input type="text" class="cajas" id="SearchLab" onkeyup="filtrarPer(this)" />
+            <h3>Informacion</h3>
+            <div class="table-responsive">
+                <table class="table table-hover" id="tbPer">
+                    <thead id="thHead">
+                        <tr>
+                            <th>Periodo</th>                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr></tr>                       
+                    </tbody>
+                </table>
+            </div>
+            <button id="btnAceptar" data-dismiss="modal">Aceptar</button>
+        </div>
+    </div>
+</div>
+
+<!--Script-->
+<script src="~/Scripts/global.js"></script>
+<script src="~/Scripts/periodo.js"></script>

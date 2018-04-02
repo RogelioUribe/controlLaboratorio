@@ -1,0 +1,28 @@
+﻿@media only screen and (min-width: 230px) {
+    #info{ width:245px;}    
+    #titulo{ margin-top:60px; }
+    .txtSearch, .txtDefault{ width:200px; }    
+    #txtObservaciones{width:232px;}    
+    #SearchLab{width:130px; text-transform:uppercase;}
+    #txtLaboratorio{text-transform:uppercase;}
+    #txtSerie{text-transform:uppercase;}
+}
+
+@media only screen and (min-width: 320px) {
+    #info{ width:280px;}    
+    .txtDefault, .txtSearch{ width:234px; } 
+    #SearchLab{width:200px;}
+    #txtObservaciones{width:266px;}    
+}
+
+@media only screen and (min-width: 480px) {
+    #info{ width:385px;}                    
+    #txtCapacidad{ margin-left:18px; }
+    #txtSerie{margin-left:30px;}        
+    #txtLaboratorio{ margin-left:38px; }    
+    #txtObservaciones{ margin-left:100px; width:268px;}
+}
+
+@media only screen and (min-width: 768px) {
+    #titulo{margin-top:30px;}
+}

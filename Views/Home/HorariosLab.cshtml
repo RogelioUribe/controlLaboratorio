@@ -1,0 +1,148 @@
+﻿@model List<ControlLab.Models.InfoLab>
+
+@{ 
+    int i = 1;
+}
+
+<!--CSS-->
+<link rel="stylesheet" type="text/css" href="~/Content/global.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/font-awesome.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/styles.css" />
+
+<!--Titulo pestaña-->
+<title>Horarios</title>
+
+<!--Titulo-->
+<h2 id="titulo">Horario de laboratorios</h2>
+
+<!--Panel de laboratorios-->
+<div id="info">    
+    <div id="info" class="table-responsive">
+        <table id="tbSerie" class="table table-hover">                        
+                <tr>
+                    <th>Laboratorios</th>
+                    @if (Model.Count > 0)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <td><input class="examplein" type="button" id="btnImportar" value="@Html.DisplayFor(modelItem => item.NombreLab)" /></td>
+                            i++;
+                        }
+                    }   
+                </tr>                                                 
+        </table>
+    </div>
+</div>
+
+<!--Panel de dias-->
+<div id="infoDias" style="display:none">
+    <div id="info" class="table-responsive">
+        <table id="tbSerie" class="table table-hover">
+            <tr>
+                <th>Dia:</th>
+                <td><input class="getDate" type="button" id="btnAceptar" value="Lunes" /></td>
+                <td><input class="getDate" type="button" id="btnAceptar" value="Martes" /></td>
+                <td><input class="getDate" type="button" id="btnAceptar" value="Miercoles" /></td>
+                <td><input class="getDate" type="button" id="btnAceptar" value="Jueves" /></td>
+                <td><input class="getDate" type="button" id="btnAceptar" value="Viernes" /></td>
+                <td><input class="getDate" type="button" id="btnAceptar" value="Sabado" /></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!--Panel de periodo-->
+<div>
+    Periodo: <input type="checkbox" id="ckPeriodo" onchange="ShowPeriodo()">
+    <input type="text" id="txtPeriodo" style="display:none" onkeyup="if (event.keyCode == 13) limpiarModalCur()">
+</div> 
+
+<!--Panel de horario-->
+<div id="infoHorario" style="display:none">
+    <div id="info" class="table-responsive">
+        <table id="tbHorario" class="table table-hover">
+            <thead>
+                <tr>
+                    <th style="display:none">Id</th>
+                    <th>Serie</th>
+                    <th>Profesor</th>
+                    <th>Materia</th>
+                    <th>Grupo</th>
+                    <th>Hora Entrada</th>
+                    <th>Hora Salida</th>
+                    <th>---</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!--Panel de modificaciòn de horario-->
+<div id="infoUpdate" style="display:none">
+    <input type="text" id="txtId" class="cajas txtDefault" style="display:none" readonly />
+    <label>Profesor:</label><input class="cajas txtDefault" type="text" id="txtPrf" readonly />
+    <label>Materia:</label><input class="cajas txtDefault" type="text" id="txtMtr" readonly />
+    <label>Grupo:</label><input class="cajas txtDefault" type="text" id="txtGrupo" readonly />
+    Laboratorio: <input type="text" class="cajas txtDefault" id="txtLaboratorio" />    
+    Hora Entrada: <select class="cajas txtDefault" id="txtHoraEntrada">
+        <option> </option>
+        <option>07:00</option>
+        <option>08:00</option>
+        <option>09:00</option>
+        <option>10:00</option>
+        <option>11:00</option>
+        <option>12:00</option>
+        <option>13:00</option>
+        <option>14:00</option>
+        <option>15:00</option>
+        <option>16:00</option>
+        <option>17:00</option>
+        <option>18:00</option>
+        <option>19:00</option>
+        <option>20:00</option>
+    </select>
+    Hora Salida: <select class="cajas txtDefault" id="txtHoraSalida">
+        <option> </option>
+        <option>08:00</option>
+        <option>09:00</option>
+        <option>10:00</option>
+        <option>11:00</option>
+        <option>12:00</option>
+        <option>13:00</option>
+        <option>14:00</option>
+        <option>15:00</option>
+        <option>16:00</option>
+        <option>17:00</option>
+        <option>18:00</option>
+        <option>19:00</option>
+        <option>20:00</option>
+        <option>21:00</option>
+        <option>22:00</option>
+    </select>
+    Dia: <select class="cajas txtDefault" id="txtDia">
+        <option> </option>
+        <option>LUNES</option>
+        <option>MARTES</option>
+        <option>MIERCOLES</option>
+        <option>JUEVES</option>
+        <option>VIERNES</option>
+        <option>SABADO</option>
+    </select><br>
+    Razon de cambio:<textarea id="txtRazon" class="cajas txtDefault" rows="4" cols="300"></textarea>
+</div>
+
+<!--Panel de botones-->
+<div id="infoAceptar" style="display:none">
+    <input type="submit" value="Aceptar" id="btnAceptar" onclick="validar()" />
+    <input type="submit" value="Cancelar" id="btnCancelar" onclick="limpiar()" />
+</div>
+
+<!--Scripts-->
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery-1.9.1.js"></script>
+<script src="~/Scripts/jquery.autocomplete.js"></script>
+<script src="~/Scripts/global.js"></script>
+<script src="~/Scripts/horariosLab.js"></script>

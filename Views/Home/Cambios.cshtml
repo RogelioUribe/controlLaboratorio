@@ -1,0 +1,70 @@
+﻿@model List<ControlLab.Models.InfoCambios>
+
+<!--CSS-->
+<link rel="stylesheet" type="text/css" href="~/Content/global.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/font-awesome.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/styles.css" />
+
+<!--Titulo pestaña-->
+<title>Historial de cambios</title>
+
+<!--Titulo-->
+<h2 id="titulo">Historial de Cambios</h2>
+
+<!--Panel periodo-->
+<div>
+    Periodo: <input type="checkbox" id="ckPeriodo" onchange="ShowPeriodo()">
+    <input type="text" id="txtPeriodo" style="display:none" onkeyup="if (event.keyCode == 13) showCambios()">
+</div>
+
+<!--Historial de cambios-->
+<div id="info">
+    <div id="info" class="table-responsive">
+        <table id="tbSerie" class="table table-hover">
+            <thead id="thHead">
+                <tr>
+                    <th>Serie</th>
+                    <th>Laboratorio Anterior</th>
+                    <th>Laboratorio Nuevo</th>
+                    <th>Hora Entrada Anterior</th>
+                    <th>Hora Salida Anterior</th>
+                    <th>Hora Entrada Nuevo</th>
+                    <th>Hora Salida Nuevo</th>
+                    <th>Dia Anterior</th>
+                    <th>Dia Nuevo</th>
+                    <th>Razón de cambio</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count > 0)
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Serie)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Laboratorio)</td>
+                            <td>@Html.DisplayFor(modelItem => item.LaboratorioNuevo)</td>
+                            <td>@Html.DisplayFor(modelItem => item.HoraEntrada)</td>
+                            <td>@Html.DisplayFor(modelItem => item.HoraSalida)</td>
+                            <td>@Html.DisplayFor(modelItem => item.HoraEntradaNuevo)</td>
+                            <td>@Html.DisplayFor(modelItem => item.HoraSalidaNuevo)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Dia)</td>
+                            <td>@Html.DisplayFor(modelItem => item.DiaNuevo)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Razon)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Fecha)</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!--Botones-->
+<button id="btnAceptar" onclick="Exportar()">Exportar</button>
+
+<!--Script-->
+<script src="~/Scripts/global.js"></script>
+<script src="~/Scripts/cambios.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

@@ -1,0 +1,21 @@
+﻿@media only screen and (min-width: 230px) {
+    #info{ width:250px;}    
+    .txtSearch, .txtDefault{ width:200px; }
+    #SearchGrp, #SearchMtr, #SearchPrf{width:130px;}
+}
+
+
+@media only screen and (min-width: 320px) {
+    #info{ width:280px;}    
+    .txtDefault, .txtSearch{ width:234px; }        
+}
+
+@media only screen and (min-width: 480px) {
+    #info{ width:379px;}        
+    #txtNombre{ margin-left:25px; }
+    #txtProfesor{ margin-left:20px; }    
+    #txtAlumnos{ margin-left:17px; }
+    #txtMateria{ margin-left:28px; }
+}
+
+

@@ -1,0 +1,384 @@
+﻿<!--CSS-->
+<link rel="stylesheet" type="text/css" href="~/Content/consultas.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/global.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/font-awesome.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/styles.css" />
+
+<!--Titulo pestaña-->
+<title>Consultas</title>
+
+<!--Titulo-->
+<h2 id="titulo">Consultas</h2>
+
+<!--Panel Principal-->
+<div id="info">
+    <div id="info" class="table-responsive">
+        <table id="tbNP" class="table table-hover">
+            <tr>                
+                <td><input type="button" id="btnAceptar" value="ACC N PRO" onclick="MostrarUsu()" /></td>
+                <td><input type="button" id="btnAceptar" value="ACCESOS" onclick="MostrarAccesos()" /></td>
+                <td><input type="button" id="btnAceptar" value="CURSOS" onclick="MostrarCursos()" /></td>
+                <td><input type="button" id="btnAceptar" value="MATERIAS" onclick="MostrarMaterias()" /></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div>
+    Periodo: <input type="checkbox" id="ckPeriodo" onchange="ShowPeriodo()">
+    <input type="text" id="txtPeriodo" style="display:none" onkeyup="if (event.keyCode == 13) limpiarModalCur()">
+</div>  
+
+<!--Usuarios Accesos no Programados-->
+<div id="Usuarios" style="display:none">
+    <table id="tbUsu" class="table table-hover">
+        <tr>
+            <td><input type="button" id="btnImportar" value="Estudiante" onclick="MostrarEstTotal()" /></td>
+            <td><input type="button" id="btnImportar" value="Docente" onclick="MostrarPrf()" /></td>
+        </tr>
+    </table>
+</div>
+
+<!--Estudiantes-->
+<div id="Estudiantes" style="display:none">
+    <label id="lblEstudiantesTotal"></label>
+    <div id="info" class="table-responsive">
+        <table id="tbLab" class="table table-hover">
+            <thead id="thHead">
+                <tr>
+                    <th style="display:none">Id</th>
+                    <th>Laboratorios</th>                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="EstLab" style="display:none">
+    Busquedas por:
+    <input type="button" id="btnImportar" value="Fecha" onclick="FechaEst()" />
+    <input type="button" id="btnImportar" value="Mes" onclick="MesEst()" />
+    <input type="button" id="btnImportar" value="Diario" onclick="HoyEst()" />
+    <!--Busqueda por fechas-->
+    <div id="fechasEst" style="display:none">
+        Fecha Inicial: <input type="date" class="cajas txtDefault" id="txtFechaInicio" />
+        Fecha Final:<input type="date" class="cajas txtDefault" id="txtFechaFinal" />
+        <div>
+            <input type="button" id="btnAceptar" value="Aceptar" onclick="BuscarFechaEst()" />
+            <input type="button" id="btnCancelar" value="Cancelar" onclick="OcultarFechaEst()" />
+        </div>
+    </div>
+    <!--Busqueda por mes-->
+    <div id="MesEst" style="display:none">
+        Mes: <select id="txtMes" class="cajas txtDefault">
+                 <option> </option>
+                 <option value="Enero">Enero</option>
+                 <option value="Febrero">Febrero</option>
+                 <option value="Marzo">Marzo</option>
+                 <option value="Abril">Abril</option>
+                 <option value="Mayo">Mayo</option>
+                 <option value="Junio">Junio</option>
+                 <option value="Julio">Julio</option>
+                 <option value="Agosto">Agosto</option>
+                 <option value="Septiembre">Septiembre</option>
+                 <option value="Octubre">Octubre</option>
+                 <option value="Noviembre">Noviembre</option>
+                 <option value="Diciembre">Diciembre</option>
+        </select>
+        <div>
+            <input type="button" id="btnAceptar" value="Aceptar" onclick="BuscarMesEst()" />
+            <input type="button" id="btnCancelar" value="Cancelar" onclick="OcultarFechaEst()" />
+        </div>
+    </div>
+
+            <div><label id="lblEstudiantesLab"></label></div>
+            <div id="info" class="table-responsive">
+                <table id="tbEstLab" class="table table-hover">
+                    <thead id="thHead">
+                        <tr>
+                            <th>No. Control</th>
+                            <th>Máquina</th>
+                            <th>Hora Entrada</th>
+                            <th>Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr></tr>
+                    </tbody>
+                </table>
+            </div>
+    <button id="btnAceptar" onclick="ExportarAccNo()">Exportar</button>
+        </div>
+
+<!--Docentes-->
+<div id="Docentes" style="display:none">
+    <label id="lblDocentesTotal"></label>
+    <div id="info" class="table-responsive">
+        <table id="tbLab" class="table table-hover">
+            <thead id="thHead">
+                <tr>
+                    <th style="display:none">Id</th>
+                    <th>Laboratorios</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="DocLab" style="display:none">
+    Busquedas por:
+    <input type="button" id="btnImportar" value="Fecha" onclick="FechaDoc()" />
+    <input type="button" id="btnImportar" value="Mes" onclick="MesDoc()" />
+    <input type="button" id="btnImportar" value="Diario" onclick="HoyDoc()" />
+    <!--Busqueda por fechas-->
+    <div id="fechasDoc" style="display:none">
+        Fecha Inicial: <input type="date" class="cajas txtDefault" id="txtFechaInicioDoc" />
+        Fecha Final:<input type="date" class="cajas txtDefault" id="txtFechaFinalDoc" />
+        <div>
+            <input type="button" id="btnAceptar" value="Aceptar" onclick="BuscarFechaDoc()" />
+            <input type="button" id="btnCancelar" value="Cancelar" onclick="OcultarFechaDoc()" />
+        </div>
+    </div>
+    <!--Busqueda por mes-->
+    <div id="MesDoc" style="display:none">
+        Mes: <select id="txtMesDoc" class="cajas txtDefault">
+            <option> </option>
+            <option value="Enero">Enero</option>
+            <option value="Febrero">Febrero</option>
+            <option value="Marzo">Marzo</option>
+            <option value="Abril">Abril</option>
+            <option value="Mayo">Mayo</option>
+            <option value="Junio">Junio</option>
+            <option value="Julio">Julio</option>
+            <option value="Agosto">Agosto</option>
+            <option value="Septiembre">Septiembre</option>
+            <option value="Octubre">Octubre</option>
+            <option value="Noviembre">Noviembre</option>
+            <option value="Diciembre">Diciembre</option>
+        </select>
+        <div>
+            <input type="button" id="btnAceptar" value="Aceptar" onclick="BuscarMesDoc()" />
+            <input type="button" id="btnCancelar" value="Cancelar" onclick="OcultarFechaDoc()" />
+        </div>
+    </div>
+
+    <div><label id="lblDocentesLab"></label></div>
+    <div id="info" class="table-responsive">
+        <table id="tbEstLab" class="table table-hover">
+            <thead id="thHead">
+                <tr>
+                    <th>No. Empleado</th>                    
+                    <th>Materia</th>
+                    <th>Hora Entrada</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr></tr>
+            </tbody>
+        </table>
+    </div>
+    <button id="btnAceptar" onclick="ExportarAccNo()">Exportar</button>
+</div>
+
+
+  <!--Accesos-->
+<div id="Accesos" style="display:none">
+    <label id="lblAccesosTotal"></label>
+    <div id="info" class="table-responsive">
+        <table id="tbLab" class="table table-hover">
+            <thead id="thHead">
+                <tr>
+                    <th style="display:none">Id</th>
+                    <th>Laboratorios</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="AccLab" style="display:none">
+    Busquedas por:
+    <input type="button" id="btnImportar" value="Fecha" onclick="FechaAsis()" />
+    <input type="button" id="btnImportar" value="Mes" onclick="MesAsis()" />
+    <input type="button" id="btnImportar" value="Diario" onclick="HoyAsis()" />
+    <!--Busqueda por fechas-->
+    <div id="fechasAsis" style="display:none">
+        Fecha Inicial: <input type="date" class="cajas txtDefault" id="txtFechaInicioAsis" />
+        Fecha Final:<input type="date" class="cajas txtDefault" id="txtFechaFinalAsis" />
+        <div>
+            <input type="button" id="btnAceptar" value="Aceptar" onclick="BuscarFechaAsis()" />
+            <input type="button" id="btnCancelar" value="Cancelar" onclick="OcultarFechaAsis()" />
+        </div>
+    </div>
+    <!--Busqueda por mes-->
+    <div id="MesAsis" style="display:none">
+        Mes: <select id="txtMesAsis" class="cajas txtDefault">
+            <option> </option>
+            <option value="Enero">Enero</option>
+            <option value="Febrero">Febrero</option>
+            <option value="Marzo">Marzo</option>
+            <option value="Abril">Abril</option>
+            <option value="Mayo">Mayo</option>
+            <option value="Junio">Junio</option>
+            <option value="Julio">Julio</option>
+            <option value="Agosto">Agosto</option>
+            <option value="Septiembre">Septiembre</option>
+            <option value="Octubre">Octubre</option>
+            <option value="Noviembre">Noviembre</option>
+            <option value="Diciembre">Diciembre</option>
+        </select>
+        <div>
+            <input type="button" id="btnAceptar" value="Aceptar" onclick="BuscarMesAsis()" />
+            <input type="button" id="btnCancelar" value="Cancelar" onclick="OcultarFechaAsis()" />
+        </div>
+    </div>
+
+    <div><label id="lblAccesosLab"></label></div>
+    <div id="info" class="table-responsive">
+        <table id="tbAccLab" class="table table-hover">
+            <thead id="thHead">
+                <tr>
+                    <th>Profesor</th>
+                    <th>Materia</th>
+                    <th>Grupo</th>
+                    <th>Alumnos</th>
+                    <th>Hora Entrada</th>
+                    <th>Hora Salida</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr></tr>
+            </tbody>
+        </table>
+    </div>
+    <button id="btnAceptar" onclick="ExportarAcc()">Exportar</button>
+</div>
+
+
+<!--Cursos-->
+<div id="Cursos" style="display:none">
+    <label id="lblCursosTotal"></label>
+    <div id="info" class="table-responsive">
+        <table id="tbCur" class="table table-hover">
+            <thead id="thHead">
+                <tr>
+                    <th style="display:none">Id</th>
+                    <th>Laboratorios</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="CurLab" style="display:none">
+    Busquedas por:
+    <input type="button" id="btnImportar" value="Fecha" onclick="FechaCur()" />
+    <input type="button" id="btnImportar" value="Mes" onclick="MesCur()" />    
+    <!--Busqueda por fechas-->
+    <div id="fechasCur" style="display:none">
+        Fecha Inicial: <input type="date" class="cajas txtDefault" id="txtFechaInicioCur" />
+        Fecha Final:<input type="date" class="cajas txtDefault" id="txtFechaFinalCur" />
+        <div>
+            <input type="button" id="btnAceptar" value="Aceptar" onclick="BuscarFechaCur()" />
+            <input type="button" id="btnCancelar" value="Cancelar" onclick="OcultarFechaCur()" />
+        </div>
+    </div>
+    <!--Busqueda por mes-->
+    <div id="MesCur" style="display:none">
+        Mes: <select id="txtMesCur" class="cajas txtDefault">
+            <option> </option>
+            <option value="Enero">Enero</option>
+            <option value="Febrero">Febrero</option>
+            <option value="Marzo">Marzo</option>
+            <option value="Abril">Abril</option>
+            <option value="Mayo">Mayo</option>
+            <option value="Junio">Junio</option>
+            <option value="Julio">Julio</option>
+            <option value="Agosto">Agosto</option>
+            <option value="Septiembre">Septiembre</option>
+            <option value="Octubre">Octubre</option>
+            <option value="Noviembre">Noviembre</option>
+            <option value="Diciembre">Diciembre</option>
+        </select>
+        <div>
+            <input type="button" id="btnAceptar" value="Aceptar" onclick="BuscarMesCur()" />
+            <input type="button" id="btnCancelar" value="Cancelar" onclick="OcultarFechaCur()" />
+        </div>
+    </div>
+
+    <div><label id="lblCursosLab"></label></div>
+    <div id="info" class="table-responsive">
+        <table id="tbCurLab" class="table table-hover">
+            <thead id="thHead">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Representante</th>
+                    <th>Presentador</th>                    
+                    <th>Hora Entrada</th>
+                    <th>Hora Salida</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr></tr>
+            </tbody>
+        </table>
+    </div>
+    <button id="btnAceptar" onclick="ExportarCur()">Exportar</button>
+</div>
+
+
+<!--Materias-->
+<div id="Materias" style="display:none">    
+    <div id="info" class="table-responsive">
+        <table id="tbMat" class="table table-hover">
+            <thead id="thHead">
+                <tr>
+                    <th style="display:none">Id</th>
+                    <th>Carrera</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="MatLab" style="display:none">
+    <div id="info" class="table-responsive">
+        <table id="tbMatCar" class="table table-hover">
+            <thead id="thHead">
+                <tr>
+                    <th style="display:none">Id</th>
+                    <th>Materia</th>
+                    <th>Atendido</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr></tr>
+            </tbody>
+        </table>
+    </div>
+    <button id="btnAceptar" onclick="ExportarMat()">Exportar</button>
+</div>
+
+
+<!--Scripts-->
+<script src="~/Scripts/global.js"></script>
+<script src="~/Scripts/consultas.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

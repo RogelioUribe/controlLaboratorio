@@ -1,0 +1,354 @@
+﻿<!--CSS-->
+<link rel="stylesheet" type="text/css" href="~/Content/grpCom.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/global.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/font-awesome.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/styles.css" />
+
+<!--Titulo pestaña-->
+<title>Grupos Compartidos</title>
+
+<!--Titulo-->
+<h2 id="titulo">Grupos Compartidos</h2>
+
+<!--Panel Grupo Uno-->
+<div id="infoUno">
+    <h3>Grupo Uno</h3>
+    Carrera: <input type="text" class="cajas txtSearch" id="txtCarreraUno" />
+    <button type="button" data-toggle="modal" data-target=".modalCarrera" onclick="limpiarModalCar()">
+        <i class="fa fa-search" aria-hidden="true"></i>
+    </button>
+    Grupo: <input type="text" class="cajas txtSearch" id="txtGrupoUno" maxlength="1" required onKeyPress="return soloLetras(event);" /> 
+</div>
+
+<!--Panel Grupo Dos-->
+<div id="infoDos">
+    <h3>Grupo Dos</h3>
+    Carrera: <input type="text" class="cajas txtSearch" id="txtCarreraDos" />
+    <button type="button" data-toggle="modal" data-target=".modalCarrera" onclick="limpiarModalCarDos()">
+        <i class="fa fa-search" aria-hidden="true"></i>
+    </button>
+    Grupo: <input type="text" class="cajas txtSearch" id="txtGrupoDos" maxlength="1" required onKeyPress="return soloLetras(event);" /> 
+</div>
+
+<!--Panel Grupo Compartido-->
+<div id="infoTres">
+    <h3>Grupo Compartido</h3>
+    Grupo: <input type="text" class="cajas txtSearch" id="txtGrupo" maxlength="1" required onKeyPress="return soloLetras(event);" /> 
+    Materia: <input type="text" class="cajas txtSearch" id="txtMateria" />
+    <button type="button" data-toggle="modal" data-target=".modalMaterias" onclick="limpiarModalMtr()">
+        <i class="fa fa-search" aria-hidden="true"></i>
+    </button>
+    Alumnos: <input type="text" class="cajas txtDefault" id="txtCapacidad" onkeypress="return justNumbers(event)" />
+    Profesor: <input type="text" class="cajas txtDefault" id="txtProfesor" />
+    <button type="button" data-toggle="modal" data-target=".modalProfesor" onclick="limpiarModalPrf()">
+        <i class="fa fa-search" aria-hidden="true"></i>
+    </button>
+    Laboratorio: <input type="text" class="cajas txtDefault" id="txtLaboratorio" />
+    <button type="button" data-toggle="modal" data-target=".modalLab" onclick="limpiarModalLab()">
+        <i class="fa fa-search" aria-hidden="true"></i>
+    </button>
+    Hora Entrada: <select class="cajas txtDefault" id="txtHoraEntrada">
+        <option> </option>
+        <option>07:00</option>
+        <option>08:00</option>
+        <option>09:00</option>
+        <option>10:00</option>
+        <option>11:00</option>
+        <option>12:00</option>
+        <option>13:00</option>
+        <option>14:00</option>
+        <option>15:00</option>
+        <option>16:00</option>
+        <option>17:00</option>
+        <option>18:00</option>
+        <option>19:00</option>
+        <option>20:00</option>
+        <option>21:00</option>
+    </select>
+    Hora Salida: <select class="cajas txtDefault" id="txtHoraSalida">
+        <option> </option>
+        <option>08:00</option>
+        <option>09:00</option>
+        <option>10:00</option>
+        <option>11:00</option>
+        <option>12:00</option>
+        <option>13:00</option>
+        <option>14:00</option>
+        <option>15:00</option>
+        <option>16:00</option>
+        <option>17:00</option>
+        <option>18:00</option>
+        <option>19:00</option>
+        <option>20:00</option>
+        <option>21:00</option>
+        <option>22:00</option>
+    </select>
+    Dia: <select class="cajas txtDefault" id="txtDia">
+        <option> </option>
+        <option>LUNES</option>
+        <option>MARTES</option>
+        <option>MIERCOLES</option>
+        <option>JUEVES</option>
+        <option>VIERNES</option>
+        <option>SABADO</option>
+    </select>
+</div>
+
+<!--Botones-->
+<input type="submit" value="Aceptar" id="btnAceptar" onclick="validarInfo()" />
+<input type="submit" value="Cancelar" id="btnCancelar" onclick="limpiarInfo()" />
+<input type="submit" value="Importar" id="btnImportar" data-toggle="modal" data-target=".modalImportar" onclick="limpiarTabla()" />
+
+<!--Modal de Carreras-->
+<div class="modal fade modal modalCarrera">
+    <div class="modal-content modalPrincipal">
+        <div class="modalSecundario">
+            <h2 id="titulo">Carreras</h2>
+            <label>Buscar:</label>
+            <input type="text" class="cajas" id="SearchCar" onkeyup="filtrarCar(this)" />
+            <h3>Informacion</h3>
+            <div class="table-responsive">
+                <table class="table table-hover" id="tbCar">
+                    <thead id="thHead">
+                        <tr>
+                            <th>Id</th>
+                            <th>Carrera</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr></tr>
+                    </tbody>
+                </table>
+            </div>
+            <button id="btnAceptar" data-dismiss="modal">Aceptar</button>
+        </div>
+    </div>
+</div>
+
+<!--Modal de Profesores-->
+<div class="modal fade modal modalProfesor">
+    <div class="modal-content modalPrincipal">
+        <div class="modalSecundario">
+            <h2 id="titulo">Profesores</h2>
+            <label>Buscar:</label>
+            <input type="text" class="cajas" id="SearchPrf" onkeyup="filtrarPrf(this)" />
+            <h3>Informacion</h3>
+            <div class="table-responsive">
+                <table class="table table-hover" id="tbPrf">
+                    <thead id="thHead">
+                        <tr>
+                            <th>No Empleado</th>
+                            <th>Nombre Completo</th>                            
+                            <th>Correo</th>                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr></tr>
+                        @*<tr id="trPrf1">
+                                <td id="tdNoEmp1">123456</td>
+                                <td id="tdNombre1">Rogelio Uribe Ruiz</td>
+                                <td id="tdPuesto1">Docente</td>
+                                <td id="tdVigencia1">02/03/2020</td>
+                                <td id="tdCorreo1">rogelio@gmail.com</td>
+                                <td id="tdStatus"><i class="fa fa-check-square" aria-hidden="true" onclick="mostrarPrf(this)"></i></td>
+                            </tr>
+                            <tr id="trPrf2">
+                                <td id="tdNoEmp2">123458</td>
+                                <td id="tdNombre2">Antonio Alfonso Maldonado Garcia</td>
+                                <td id="tdPuesto2">Auxiliar bimestral</td>
+                                <td id="tdVigencia2">02/05/2020</td>
+                                <td id="tdCorreo2">antonio@gmail.com</td>
+                                <td id="tdStatus"><i class="fa fa-check-square" aria-hidden="true" onclick="mostrarPrf(this)"></i></td>
+                            </tr>
+                            <tr id="trPrf3">
+                                <td id="tdNoEmp3">123451</td>
+                                <td id="tdNombre3">Silvia Johana Gonzales Garcia</td>
+                                <td id="tdPuesto3">Director</td>
+                                <td id="tdVigencia3">12/03/2020</td>
+                                <td id="tdCorreo3">silvia@gmail.com</td>
+                                <td id="tdStatus"><i class="fa fa-check-square" aria-hidden="true" onclick="mostrarPrf(this)"></i></td>
+                            </tr>*@
+                    </tbody>
+                </table>
+            </div>
+            <button id="btnAceptar" data-dismiss="modal">Aceptar</button>
+        </div>
+    </div>
+</div>
+
+<!--Modal de Laboratorios-->
+<div class="modal fade modal modalLab">
+    <div class="modal-content modalPrincipal">
+        <div class="modalSecundario">
+            <h2 id="titulo">Laboratorios</h2>
+            <label>Buscar:</label>
+            <input type="text" class="cajas" id="SearchLab" onkeyup="filtrarLab(this)" />
+            <h3>Informacion</h3>
+            <div class="table-responsive">
+                <table class="table table-hover" id="tbLab">
+                    <thead id="thHead">
+                        <tr>
+                            <th>Laboratorio</th>
+                            <th>Capacidad</th>                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr></tr>
+                        @*<tr id="trLab1">
+                                <td id="tdNombre1">A</td>
+                                <td id="tdCapacidad1">35</td>
+                                <td id="tdStatus"><i class="fa fa-check-square" aria-hidden="true" onclick="mostrarLab(this)"></i></td>
+                            </tr>
+                            <tr id="trLab2">
+                                <td id="tdNombre2">I</td>
+                                <td id="tdCapacidad2">40</td>
+                                <td id="tdStatus"><i class="fa fa-check-square" aria-hidden="true" onclick="mostrarLab(this)"></i></td>
+                            </tr>
+                            <tr id="trLab3">
+                                <td id="tdNombre3">C</td>
+                                <td id="tdCapacidad3">30</td>
+                                <td id="tdStatus"><i class="fa fa-check-square" aria-hidden="true" onclick="mostrarLab(this)"></i></td>
+                            </tr>*@
+                    </tbody>
+                </table>
+            </div>
+            <button id="btnAceptar" data-dismiss="modal">Aceptar</button>
+        </div>
+    </div>
+</div>
+
+<!--Modal de Materias-->
+<div class="modal fade modal modalMaterias">
+    <div class="modal-content modalPrincipal">
+        <div class="modalSecundario">
+            <h2 id="titulo">Materias</h2>
+            <label>Buscar:</label>
+            <input type="text" class="cajas" id="SearchMtr" onkeyup="filtrarMrt(this)" />
+            <h3>Informacion</h3>
+            <div class="table-responsive">
+                <table class="table table-hover" id="tbMrt">
+                    <thead id="thHead">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Semestre</th>
+                            <th>Carrera</th>                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr></tr>
+                        @*<tr id="trMrt1">
+                                <td id="tdNombre1">Programacion orientada a objetos</td>
+                                <td id="tdSemestre1">4</td>
+                                <td id="tdCarrera1">Ingenieria en Sistemas Computacionales</td>
+                                <td id="tdStatus"><i class="fa fa-check-square" aria-hidden="true" onclick="mostrarMtr(this)"></i></td>
+                            </tr>
+                            <tr id="trMrt2">
+                                <td id="tdNombre2">Telecomunicaciones</td>
+                                <td id="tdSemestre2">5</td>
+                                <td id="tdCarrera2">Telecomunicaciones</td>
+                                <td id="tdStatus"><i class="fa fa-check-square" aria-hidden="true" onclick="mostrarMtr(this)"></i></td>
+                            </tr>
+                            <tr id="trMrt3">
+                                <td id="tdNombre3">Contabilidad</td>
+                                <td id="tdSemestre3">3</td>
+                                <td id="tdCarrera3">Informatica</td>
+                                <td id="tdStatus"><i class="fa fa-check-square" aria-hidden="true" onclick="mostrarMtr(this)"></i></td>
+                            </tr>*@
+                    </tbody>
+                </table>
+            </div>
+            <button id="btnAceptar" data-dismiss="modal">Aceptar</button>
+        </div>
+    </div>
+</div>
+
+<!--Modal de Importar-->
+<div class="modal fade modal modalImportar">
+    <div class="modal-content modalPrincipal">
+        <div class="modalSecundario">
+            <h2 id="titulo">Importar Documento</h2>
+            <h3>Informacion</h3>
+            <input type="file" id="my_file_input" />
+
+            <div id="info" class="table-responsive">
+                <table id="my_file_output" class="table table-hover">
+                    <thead id="thHead">
+                        <tr>
+                            <th>Carrera Grupo Uno</th>
+                            <th>Grupo Uno</th>
+                            <th>Carrera Grupo Dos</th>
+                            <th>Grupo Dos</th>
+                            <th>Grupo</th>
+                            <th>Alumnos</th>
+                            <th>Materia</th>
+                            <th>Profesor</th>
+                            <th>Laboratorio</th>
+                            <th>Hora Entrada</th>
+                            <th>Hora Salida</th>
+                            <th>Dia</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>               
+            </div>
+            <button id="btnAceptar" onclick="validar()">Aceptar</button>
+            <input type="submit" value="Cancelar" id="btnCancelar" onclick="limpiar()" />
+        </div>
+    </div>
+</div>
+
+<!--Script-->
+<script src="~/Scripts/jquery-1.9.1.js"></script>
+<script src="~/Scripts/jquery.autocomplete.js"></script>
+<script src="~/Scripts/global.js"></script>
+<script src="~/Scripts/importarGC.js"></script>
+<script src="~/Scripts/xls.js"></script>
+<script language="JavaScript">
+        var oFileIn;
+        //Código JQuery
+        $(function() {
+            oFileIn = document.getElementById('my_file_input');
+            if (oFileIn.addEventListener) {
+                oFileIn.addEventListener('change', filePicked, false);
+            }
+        });
+
+        //Método que hace el proceso de importar excel a html
+        function filePicked(oEvent) {
+            // Obtener el archivo del input
+            var oFile = oEvent.target.files[0];
+            var sFilename = oFile.name;
+            // Crear un Archivo de Lectura HTML5
+            var reader = new FileReader();
+
+            // Leyendo los eventos cuando el archivo ha sido seleccionado
+            $("#my_file_output > tbody ").empty();
+            reader.onload = function(e) {
+                var data = e.target.result;
+                var cfb = XLS.CFB.read(data, {
+                    type: 'binary'
+                });
+                var wb = XLS.parse_xlscfb(cfb);
+                // Iterando sobre cada sheet
+                wb.SheetNames.forEach(function(sheetName) {
+                    // Obtener la fila actual como CSV
+                    var sCSV = XLS.utils.make_csv(wb.Sheets[sheetName]);
+                    var data = XLS.utils.sheet_to_json(wb.Sheets[sheetName], {
+                        header: 1
+                    });
+                    $.each(data, function(indexR, valueR) {
+                        var sRow = "<tr>";
+                        $.each(data[indexR], function(indexC, valueC) {
+                            sRow = sRow + "<td>" + valueC + "</td>";
+                        });
+                        sRow = sRow + "</tr>";
+                        $("#my_file_output").append(sRow);
+                    });
+                });
+            };
+
+        // Llamar al JS Para empezar a leer el archivo .. Se podría retrasar esto si se desea
+        reader.readAsBinaryString(oFile);
+        }
+
+</script>
